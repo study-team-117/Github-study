@@ -10,6 +10,7 @@ GitHubの基本操作からチーム開発までを学ぶための資料です�
 
 | 資料 | 内容 |
 |---|---|
+| [00 インストール・初期設定](docs/00-install.md) | Gitインストール・初期設定 |
 | [01 基本操作](docs/01-basic.md) | clone・add・commit・push・pull |
 | [02 ブランチ管理](docs/02-branch.md) | branch・switch |
 | [03 マージ](docs/03-merge.md) | merge・Pull Request・コンフリクト |
