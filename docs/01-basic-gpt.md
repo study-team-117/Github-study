@@ -260,29 +260,24 @@ HTTPS認証ではブラウザでのログインが必要になる場合があり
 
 ## 1-10. 理解度チェック・実習課題
 
-### チェックリスト
+ここまで学んだGit・GitHubの基本操作を、実際に手を動かして確認しましょう。
 
-- [ ] GitHub上でリポジトリを作成できた
-- [ ] ブラウザでREADMEを編集・コミットできた
-- [ ] リポジトリをPCにcloneできた
-- [ ] VSCodeで編集し、`git status` で変更を確認できた
-- [ ] `add → commit → push` でGitHubに反映できた
-- [ ] ブラウザの変更を `pull` でPCに取り込めた
+今回の演習では、ファイルの作成・編集からcommit、push、pullまでの一連の操作を行います。
 
-### 確認問題
+**目安時間：8〜10分**
 
-1. `git add` と `git commit` は何が違うでしょうか？
-2. VSCodeでファイルを保存しただけで、GitHubの内容も変わるでしょうか？
-3. GitHub上で編集した内容をPCに取り込むコマンドは何でしょうか？
+### 演習に取り組む
 
-<details>
-<summary>解答を見る</summary>
+👉 [演習01：Git・GitHubの基本操作](exercise/01-basic-exercise.md)
 
-1. `git add` は次のコミットに含める変更を選び、`git commit` はその変更を履歴に記録します。
-2. 変わりません。通常はコミットした後にpushする必要があります。
-3. `git pull` です。
+演習終了後は、回答例を確認して理解を深めましょう。
 
-</details>
+[演習01：回答例・解説](exercise/01-basic-exercise-answer.md)
+
+---
+
+[← 目次に戻る](../README.md)
+
 
 ---
 
