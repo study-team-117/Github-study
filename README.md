@@ -10,7 +10,7 @@ GitやGitHubを初めて使う人を対象に、実際にコマンドを実行�
 
 | 資料 | 学習内容 |
 |---|---|
-| [00 インストール・初期設定](docs/00-setup.md) | Git・VSCodeの導入、GitHubアカウントと初期設定 |
+| [00 インストール・初期設定](docs/00-install.md) | Git・VSCodeの導入、GitHubアカウントと初期設定 |
 | [01 Git・GitHubの基本操作](docs/01-basic.md) | リポジトリ作成、clone、VSCode、add・commit・push・pull |
 | [02 ブランチの操作](docs/02-branch.md) | ブランチの作成・切り替え・push |
 | [03 チーム開発の基本](docs/03-team.md) | Pull Request、レビュー、マージ、共同開発 |
