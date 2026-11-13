@@ -22,7 +22,7 @@
 | push | PC上のコミットをGitHubに送る |
 | pull | GitHub上の更新をPCに取り込む |
 
-この章では、まずGitHubのブラウザで操作し、次に**コマンドプロンプト（cmd）→ VSCode**の順に操作します。Windowsを例に説明します。
+この章では、まずGitHubのブラウザで操作し、次に**ターミナル → VSCode**の順に操作します。WindowsとMacの違いは必要な箇所で分けて説明します。
 
 ```text
 GitHubでリポジトリ作成
@@ -89,43 +89,54 @@ GitHubの操作を練習しています。
 https://github.com/ユーザー名/git-practice.git
 ```
 
-### ② コマンドプロンプトを開く
+### ② ターミナルを開く
 
-Windowsのスタートメニューで `cmd` と検索して、**コマンドプロンプト**を起動します。
+- **Windows**：スタートメニューで `cmd` と検索し、**コマンドプロンプト**を起動します。
+- **Mac**：`Command + Space` でSpotlightを開き、`ターミナル`（Terminal）と入力して起動します。
 
 ### ③ 保存先に移動する
 
-以下はユーザーフォルダに移動する例です。
+今回は、OSに関係なく**自分のホームフォルダ**を保存先にします。
+
+**Windows（コマンドプロンプト）**
 
 ```cmd
 cd /d %USERPROFILE%
 ```
 
-> 保存先は任意です。すでに同名のフォルダがある場合は、別の保存先を選んでください。
+**Mac（ターミナル）**
 
-### ④ cloneしてフォルダに移動する
+```bash
+cd ~
+```
 
-```cmd
+> 保存先は任意です。すでに `git-practice` フォルダがある場合は、別の保存先を選んでください。
+
+### ④ cloneしてフォルダに移動する（Windows・Mac共通）
+
+```bash
 git clone https://github.com/ユーザー名/git-practice.git
 cd git-practice
 ```
 
 `ユーザー名` は自分のGitHubユーザー名に置き換えます。Privateリポジトリの場合、認証画面が出ることがあります。
 
-### ⑤ `code .` でVSCodeを開く
+### ⑤ `code .` でVSCodeを開く（Windows・Mac共通）
 
-**ここが重要です。** `cd git-practice` でリポジトリの中に移動したら、次のコマンドを実行します。
+`cd git-practice` でリポジトリの中に移動したら、次を実行します。
 
-```cmd
+```bash
 code .
 ```
 
 - `code`：VSCodeを起動するコマンド
 - `.`（ドット）：現在いるフォルダを表す
 
-つまり、**`code .` は「今いるフォルダをVSCodeで開く」**という意味です。VSCodeのエクスプローラーに `README.md` と `memo.md` が表示されれば成功です。
+**`code .` は「今いるフォルダをVSCodeで開く」**という意味です。VSCodeのエクスプローラーに `README.md` と `memo.md` が表示されれば成功です。
 
-**一連の操作をまとめると：**
+### OS別：ここまでのコマンド一覧
+
+**Windows（コマンドプロンプト）**
 
 ```cmd
 cd /d %USERPROFILE%
@@ -134,9 +145,22 @@ cd git-practice
 code .
 ```
 
-> **`code` が認識されない場合**：VSCodeのPATH設定が有効になっていない可能性があります。VSCodeを再インストールする際にPATH追加を有効にするか、代わりにVSCodeの **File → Open Folder** から `git-practice` を開いてください。
+**Mac（ターミナル）**
+
+```bash
+cd ~
+git clone https://github.com/ユーザー名/git-practice.git
+cd git-practice
+code .
+```
+
+> **Macで `code: command not found` と表示された場合**：VSCodeを開き、`Command + Shift + P` → `Shell Command: Install 'code' command in PATH` を実行します。その後、ターミナルを開き直してください。
 >
-> **補足**：PowerShellを使う場合、保存先への移動は `cd $HOME` と書けます。`git clone`、`cd git-practice`、`code .` は同様に使えます。
+> **Windowsで `code` が認識されない場合**：VSCodeのPATH設定を確認し、コマンドプロンプトを開き直してください。
+>
+> **共通の代替方法**：VSCodeの **File → Open Folder**（Macでは **File → Open Folder...**）から `git-practice` を選んでも構いません。
+>
+> **WindowsのPowerShellの場合**：ホームフォルダへの移動は `cd $HOME` です。それ以外のコマンドは共通です。
 
 ---
 
@@ -259,9 +283,9 @@ git pull origin main
 
 ## 1-9. よくあるつまずき
 
-### `'code' は、内部コマンドまたは外部コマンド...` と表示される
+### `code` コマンドが見つからない
 
-VSCodeのPATH設定を確認してください。設定を修正したらコマンドプロンプトを開き直します。急ぐ場合はVSCodeの **File → Open Folder** を使えます。
+WindowsではVSCodeのPATH設定を確認し、コマンドプロンプトを開き直します。MacではVSCodeのコマンドパレット（`Command + Shift + P`）から `Shell Command: Install 'code' command in PATH` を実行し、ターミナルを開き直します。急ぐ場合はVSCodeの **File → Open Folder** を使えます。
 
 ### `fatal: not a git repository` と表示される
 
