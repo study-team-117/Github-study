@@ -147,6 +147,7 @@ git version 2.xx.x.windows.x
 ## 4. Visual Studio Codeをインストールする
 
 VSCodeは必須ではありませんが、コードの編集やGitの操作に便利なエディタです。
+
 ※講義でインストールしてると思うので飛ばしてもらって構いません。
 
 1. [VSCode公式サイト](https://code.visualstudio.com/)を開きます。
