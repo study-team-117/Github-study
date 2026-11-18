@@ -52,7 +52,7 @@ GitHubを利用するには、GitHubアカウントが必要です。
 3. 「Create account」をクリックします。
 4. 求められた認証（メール確認など）を完了します。
 
-![GitHubの新規登録画面](../images/github-signup.png)
+![GitHubの新規登録画面](../images/github-new.png)
 
 ### 2-2. Googleアカウントで登録する
 
@@ -64,7 +64,7 @@ Googleアカウントを持っている場合は、Googleアカウントを利�
 4. Googleアカウントで認証します。
 5. GitHubの画面に戻ったら、ユーザー名などの必要事項を設定し、登録を完了します。
 
-![Googleアカウントでの登録](../images/github-google-signup.png)
+![Googleアカウントでの登録](../images/github-google.png)
 
 > **注意**：GoogleアカウントとGitHubアカウントは別のものです。Googleアカウントを利用して登録した場合でも、GitHubのユーザー名が設定されます。
 
