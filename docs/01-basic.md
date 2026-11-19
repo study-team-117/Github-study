@@ -4,7 +4,7 @@
 > **目安時間**：45〜60分（操作練習を含む）  
 > **ゴール**：GitHubでリポジトリを作り、PCにcloneし、VSCodeで編集した内容をpushできる。ブラウザ上の変更をpullで取り込める。
 
-[← 目次に戻る](../README.md) ｜ [00 インストール・初期設定](00-setup.md) ｜ [02 ブランチの操作](02-branch.md)
+[← 目次に戻る](../README.md) ｜ [00 インストール・初期設定](00-install.md) ｜ [02 ブランチの操作](02-branch.md)
 
 ---
 
@@ -20,21 +20,24 @@
 | clone | GitHubのリポジトリをPCにコピーする |
 | commit | 変更を履歴として記録する |
 | push | PC上のコミットをGitHubに送る |
-| pull | GitHub上の更新をPCに取り込む |
+| pull | リモートの更新を取得し、現在のローカルブランチに取り込む |
+| ブランチ | コミットの履歴をたどるための名前。この章では既定のブランチを `main` とする |
+| ステージング | 現時点の変更内容を、次のコミットに含めるために準備すること |
 
 この章では、まずGitHubのブラウザで操作し、次に**ターミナル → VSCode**の順に操作します。WindowsとMacの違いは必要な箇所で分けて説明します。
 
-```text
-GitHubでリポジトリ作成
-       ↓ clone
-PCのフォルダ → code . → VSCodeで編集
-       ↓ git add → git commit → git push
-GitHubに変更が反映される
-       ↓ GitHubのブラウザで編集
-PCで git pull → 最新の内容を取得
+```mermaid
+flowchart TD
+    A["GitHubでリポジトリを作成し、READMEを編集する"]
+    A -->|"git clone"| B["PCにコピーする"]
+    B -->|"code ."| C["VSCodeで開いて編集・保存する"]
+    C -->|"git add / git commit"| D["PCの履歴に変更を記録する"]
+    D -->|"git push"| E["GitHubに変更が反映される"]
+    E --> F["GitHubのブラウザで追記・コミットする"]
+    F -->|"git pull"| G["PCのファイルと履歴に更新が反映される"]
 ```
 
-> **事前準備**：00章を参考に、GitとVSCodeのインストール、Gitのユーザー名・メールアドレス設定を済ませてください。
+> **事前準備**：[00章](00-install.md)を参考に、GitとVSCodeのインストール、Gitのユーザー名・メールアドレス設定を済ませてください。コマンド欄の入力を1行ずつ実行し、出力例は確認用に読みます。
 
 ---
 
@@ -43,13 +46,15 @@ PCで git pull → 最新の内容を取得
 1. [GitHub](https://github.com/) にログインします。
 2. **New repository** を選択します。
 3. **Repository name** に `git-practice` と入力します。
-4. **Public** または **Private** を選択します。練習用ならPrivateでも構いません。
-5. **Add a README file** にチェックを入れます。
+4. 公開範囲を選びます。個人練習では **Private** を選べます。
+5. **Add README**（または **Add a README file**）を有効にします。最初のコミットが作られ、すぐにREADMEを編集できます。
 6. **Create repository** を押します。
 
 `README.md` が表示されれば成功です。READMEはリポジトリの説明を書くMarkdownファイルです。
 
-> **注意**：Publicのリポジトリは誰でも閲覧できます。パスワードやAPIキーなどは記載しないでください。
+> **注意**：Publicのリポジトリは誰でも閲覧できます。公開範囲にかかわらず、パスワードやAPIキーなどは記載しないでください。
+
+<!-- スクリーンショット挿入候補（実画面）: リポジトリ作成画面の Repository name、公開範囲、Add README。 -->
 
 ---
 
@@ -59,19 +64,21 @@ PCで git pull → 最新の内容を取得
 2. 鉛筆アイコン（**Edit this file**）を押します。
 3. 次の文章を追記します。
 
-```markdown
-## 自己紹介
+   ```markdown
+   ## 自己紹介
 
-GitHubの操作を練習しています。
-```
+   GitHubの操作を練習しています。
+   ```
 
 4. **Commit changes...** を押します。
-5. コミットメッセージに `READMEに自己紹介を追加` と入力し、コミットします。
+5. コミットメッセージに `READMEに自己紹介を追加` と入力します。選択肢が表示されたら既定のブランチ（本章では `main`）に直接コミットする方を選び、確定します。
 6. READMEの表示が更新されたことを確認します。
 
 ### ブラウザから新しいファイルを作る
 
-リポジトリ画面で **Add file → Create new file** を選び、`memo.md` という名前でファイルを作ってコミットします。
+リポジトリ画面で **Add file → Create new file** を選び、ファイル名に `memo.md`、本文に `# 学習メモ` と入力して、READMEと同じ手順でコミットします。
+
+<!-- スクリーンショット挿入候補（実画面）: READMEの編集ボタンと、コミットメッセージおよび反映先を選ぶダイアログ。 -->
 
 > 今回は個人用の練習リポジトリなので、`main` に直接コミットして構いません。チーム開発では、02・03章で扱う作業ブランチとPull Requestを使います。
 
@@ -83,7 +90,9 @@ GitHubの操作を練習しています。
 
 ### ① GitHubでURLをコピーする
 
-リポジトリ画面の **Code → HTTPS** からURLをコピーします。
+リポジトリ画面の **Code → HTTPS** からURLをコピーします。ブラウザのアドレス欄にあるファイル個別ページのURLと区別してください。
+
+<!-- スクリーンショット挿入候補（実画面）: Code メニューの HTTPS タブとURLのコピーボタン。 -->
 
 ```text
 https://github.com/ユーザー名/git-practice.git
@@ -119,7 +128,13 @@ git clone https://github.com/ユーザー名/git-practice.git
 cd git-practice
 ```
 
-`ユーザー名` は自分のGitHubユーザー名に置き換えます。Privateリポジトリの場合、認証画面が出ることがあります。
+`git clone` でコミット履歴を取得し、既定のブランチを含む作業フォルダを作ります。例のURL全体を先ほどコピーしたURLに置き換えてください。Privateリポジトリではアクセスできるアカウントで認証します。
+
+```text
+Cloning into 'git-practice'...
+```
+
+エラーが出ずに処理が終わったら、`cd git-practice` で作成されたフォルダに移動します。`cd` は通常、成功時に何も出力しません。以降のGit操作は、このフォルダ内のターミナルで実行します。
 
 ### ⑤ `code .` でVSCodeを開く（Windows・Mac共通）
 
@@ -169,23 +184,29 @@ code .
 1. VSCodeのエクスプローラーで `README.md` を開きます。
 2. 末尾に次の一文を追加します。
 
-```markdown
-VSCodeからファイルを編集しました。
-```
+   ```markdown
+   VSCodeからファイルを編集しました。
+   ```
 
-3. **Ctrl + S** で保存します。
+3. **Ctrl + S**（Macは **Command + S**）で保存します。
 4. VSCodeのメニューから **Terminal → New Terminal** を選びます。
 5. ターミナルで次のコマンドを実行します。
 
-```bash
-git status
-git diff
+   ```bash
+   git status
+   ```
+
+`git status` は現在のブランチとファイルの状態を表示します。次のように表示されれば、`README.md` の変更が保存され、まだステージされていない状態です。
+
+```text
+On branch main
+Changes not staged for commit:
+        modified:   README.md
 ```
 
-- `git status`：どのファイルが変更されたかを確認する
-- `git diff`：変更前と変更後の差分を確認する
+表示されたブランチ名が `main` と異なる場合は、自分の練習用リポジトリの既定ブランチを確認し、この章の `main` をその名前に読み替えてください。Windows 11ではVSCodeの新しいターミナルがPowerShellでも、ここからのGitコマンドは同じです。
 
-`modified: README.md` のように表示されれば、変更を認識できています。
+**補足**：変更した行も見たいときは `git diff` を実行します。すでにGitが管理しているファイルのうち、まだステージしていない変更が表示されます。出力本文の `+` は追加行、`-` は削除行です。たとえば `+VSCodeからファイルを編集しました。` が追加行です。新規の未追跡ファイルは `git status` の `Untracked files` 欄で確認します。差分がページ表示されて入力に戻れないときは `q` を押します。
 
 > **重要**：VSCodeで保存しただけでは、GitHubには反映されません。
 
@@ -195,23 +216,29 @@ git diff
 
 変更をGitHubに送るには、基本的に次の3段階を行います。
 
-```text
-編集・保存
-   ↓
-git add（コミット対象を選ぶ）
-   ↓
-git commit（PC上に変更履歴を記録）
-   ↓
-git push（GitHubに送信）
+```mermaid
+flowchart LR
+    A["作業フォルダ<br/>編集・保存したファイル"]
+    B["ステージ<br/>次に記録する内容"]
+    C["ローカルのコミット履歴"]
+    D["GitHubの履歴"]
+    A -->|"git add"| B
+    B -->|"git commit"| C
+    C -->|"git push"| D
 ```
 
 ### ① 変更をステージングする
 
+`git status` で、今回の練習で変更した `README.md` だけが表示されていることを確認します。次のコマンドを実行します。
+
 ```bash
-git add README.md
+git add .
+git status
 ```
 
-`git add` は、次のコミットに含める変更を選ぶ操作です。`git add .` で複数ファイルをまとめて選べますが、不要なファイルを含めないよう注意してください。
+`.` は「今いるフォルダ」を意味します。`git add .` は、そのフォルダ以下の追加・編集・削除をまとめて、次のコミットに入れる準備をします。成功時は通常何も表示されません。続けて `git status` を実行し、`Changes to be committed` の下に `README.md` があれば準備完了です。追加で編集したら、保存してからもう一度 `git add .` を実行します。
+
+**補足**：ほかの変更があり、READMEだけを選びたいときは `git add README.md` を使います。コミットに入る変更を行単位で見たいときは `git diff --staged` を実行します。出力本文の `+` は追加行、`-` は削除行です。
 
 ### ② コミットする
 
@@ -219,24 +246,39 @@ git add README.md
 git commit -m "READMEを更新"
 ```
 
-`-m` の後には、何を変更したか分かる短いメッセージを書きます。
+`git commit` はステージした内容を、現在のブランチの履歴に記録します。`-m` の後には、何を変更したか分かる短いメッセージを書きます。
+
+```text
+[main a1b2c3d] READMEを更新
+ 1 file changed, 1 insertion(+)
+```
+
+`main` が記録先、`a1b2c3d` がコミットIDの短縮表示です。IDや変更行数は実際の編集によって変わります。この時点のコミットはPC側にあります。
 
 ### ③ GitHubにpushする
 
 ```bash
-git push origin main
+git push
 ```
 
-- `origin`：cloneしたときに登録されるリモートの一般的な名前
-- `main`：この教材で使用するブランチ名
+この章の手順でクローンした練習用リポジトリでは、Gitが接続先（`origin`）とブランチ（`main`）を覚えているので、`git push` だけで送れます。送信先を明示する書き方は `git push origin main` です。
 
-GitHubのリポジトリ画面を再読み込みし、追記した文章が表示されれば成功です。
+成功時の出力例では、`main -> main` がローカルと送信先のブランチを表します。
+
+```text
+To https://github.com/ユーザー名/git-practice.git
+   123abcd..a1b2c3d  main -> main
+```
+
+GitHubのリポジトリ画面で `main` を表示して再読み込みし、READMEに追記した文章が表示されれば成功です。`Everything up-to-date` と表示された場合は送る新しいコミットがありません。追記が見つからなければ、コミット済みか、表示しているブランチと送信先が合っているかを確認します。
+
+<!-- スクリーンショット挿入候補（実画面）: push後のリポジトリで main を選び、READMEの追記と最新コミットが確認できる箇所。 -->
 
 > **注意**：他の人が先にGitHubを更新していると、pushが拒否されることがあります。安易に `git push --force` は使わず、04章の対処方法を確認してください。
 
 ### VSCodeの画面から操作する方法
 
-左側の **ソース管理（Source Control）** から、変更の確認、ステージング、コミット、pushなどもできます。最初はコマンドで仕組みを理解すると、画面操作の意味も分かりやすくなります。
+左側の **ソース管理（Source Control）** でも同じ操作ができます。**変更（Changes）** の `README.md` をクリックして差分を開き、ファイル横の **＋** でステージします。**ステージされている変更（Staged Changes）** を確認してから、メッセージ欄に説明を入力し、**コミット（Commit）** を選びます。最後にソース管理の **…** メニューから **プッシュ（Push）** を選びます。表示名や配置は言語設定やバージョンで変わる場合があります。
 
 ---
 
@@ -247,37 +289,49 @@ GitHubのリポジトリ画面を再読み込みし、追記した文章が表�
 1. GitHubのブラウザで `README.md` を開き、`ブラウザから追記しました。` と追加してコミットします。
 2. VSCodeに戻り、ターミナルで作業状態を確認します。
 
-```bash
-git status
-```
+   ```bash
+   git status
+   ```
 
-3. 未コミットの変更がない状態で、次を実行します。
+3. `On branch main` と `nothing to commit, working tree clean` を確認してから、次を実行します。
 
-```bash
-git pull origin main
-```
+   ```bash
+   git pull
+   ```
 
 4. VSCodeでREADMEを確認し、ブラウザで追加した文章が反映されていれば成功です。
 
-> `git pull` はGitHubの変更を取得して現在のブランチに統合します。ローカルに未コミット変更がある場合や、履歴が分岐した場合は追加の対応が必要になることがあります。
+`git pull` はGitHub上の変更を取得して、**現在のブランチ**に取り込みます。この練習では、ブラウザで追加したコミットをPC側に取り込みます。
+
+```text
+Updating a1b2c3d..d4e5f6a
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+```
+
+`Fast-forward` は手元のブランチがリモートのコミットまで進んだことを示します。`Already up to date.` は取り込む新しい変更がないという意味です。エラーが出た場合は、[04章の対処](04-troubleshooting.md)を参照してください。
+
+**補足**：PCとGitHubの両方で別々にコミットした場合に、自動で統合せず停止させたいときは `git pull --ff-only` を使います。
 
 ---
 
 ## 1-8. よく使うコマンド早見表
 
-| コマンド | 役割 |
-|---|---|
-| `cd フォルダ名` | 指定したフォルダへ移動する |
-| `code .` | 現在のフォルダをVSCodeで開く |
-| `git clone URL` | GitHubのリポジトリをPCにコピーする |
-| `git status` | 現在の変更状態を確認する |
-| `git diff` | ステージング前の変更内容を確認する |
-| `git add ファイル名` | コミット対象を選ぶ |
-| `git commit -m "説明"` | 変更を履歴に記録する |
-| `git push origin main` | コミットをGitHubに送る |
-| `git pull origin main` | GitHubの更新を取り込む |
-| `git log --oneline` | コミット履歴を簡潔に表示する |
-| `git remote -v` | リモートの接続先を確認する |
+| 実行例 | 目的 | 結果の見方 |
+|---|---|---|
+| `cd git-practice` | クローンしたフォルダに移動する | 通常、成功時は出力なし |
+| `code .` | 現在のフォルダをVSCodeで開く | エクスプローラーに `README.md` が見える |
+| `git clone URL` | リポジトリを履歴ごとコピーする。 `URL` は実際のHTTPS URLに置き換える | `Cloning into 'git-practice'...` と表示され、フォルダが作られる |
+| `git status` | ブランチとファイルの状態を確認する | `On branch main` が現在のブランチ。 `working tree clean` なら未コミットの変更なし |
+| `git diff` | 追跡済みファイルの未ステージの変更を見る | 本文の `+` は追加行、 `-` は削除行 |
+| `git add .` | 今いるフォルダ以下の変更をまとめてステージする | 通常は出力なし。 `git status` の `Changes to be committed` で確認 |
+| `git diff --staged` | 次のコミットに入る差分を見る | ステージ済みの追加・削除行が表示される |
+| `git commit -m "READMEを更新"` | ステージした内容を履歴に記録する | `[main a1b2c3d]` のようにブランチ名と短いコミットIDが表示される |
+| `git push` | ローカルの `main` をGitHubに送る | 更新された場合は `main -> main` と表示される |
+| `git pull` | GitHub上の更新を現在のブランチに取り込む | `Fast-forward` は更新あり、 `Already up to date.` は更新なし |
+| `git log --oneline -5` | 現在のブランチの直近5件までのコミット履歴を見る | 1行に短いコミットIDとメッセージが表示される。例は `a1b2c3d READMEを更新` |
+| `git remote -v` | リモートの名前とURLを確認する | `origin` の `(fetch)` が取得先、 `(push)` が送信先 |
 
 ---
 
@@ -297,7 +351,7 @@ Git管理されていないフォルダでコマンドを実行している可�
 
 ### `Author identity unknown` と表示される
 
-Gitのユーザー名・メールアドレスが未設定の可能性があります。[00 インストール・初期設定](00-setup.md) の `git config` を確認してください。
+Gitのユーザー名・メールアドレスが未設定の可能性があります。[00 インストール・初期設定](00-install.md) の `git config` を確認してください。
 
 ### `rejected` / `non-fast-forward` と表示される
 
@@ -319,12 +373,12 @@ HTTPS接続ではGit Credential Managerなどによるブラウザ認証が必�
 - `git commit` と `git push` は何が違う？
 - GitHub上のREADMEを編集した後、PCに反映するには何をする？
 
-### 演習問題（後から追加予定）
+### 演習問題
 
-演習と回答例は別ファイルとして作成する予定です。完成後、以下のリンクから移動できるようにします。
+基本操作を一通り試したら、演習で同じ流れを練習しましょう。回答例でコマンドと確認方法を振り返れます。
 
 - [演習01：Git・GitHubの基本操作](exercise/01-basic-exercise.md)
-- [演習01：回答例・解説](exercise/01-basic-exercise-answer.md)
+- [演習01：回答例・解説](exercise/answer/01.md)
 
 ---
 
@@ -338,4 +392,4 @@ HTTPS接続ではGit Credential Managerなどによるブラウザ認証が必�
 
 ---
 
-[← 00 インストール・初期設定](00-setup.md) ｜ [目次に戻る](../README.md) ｜ [02 ブランチの操作 →](02-branch.md)
+[← 00 インストール・初期設定](00-install.md) ｜ [目次に戻る](../README.md) ｜ [02 ブランチの操作 →](02-branch.md)
