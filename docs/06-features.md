@@ -1,6 +1,6 @@
 # 06 GitHubの便利な機能
 
-[← 目次に戻る](../README.md) ｜ [← 05 便利なコマンド・小技](05-tips.md) ｜ [次へ：07 応用編 →](07-advanced.md)
+[← 目次に戻る](../README.md#目次) ｜ [← 05 便利なコマンド・小技](05-tips.md) ｜ [次へ：07 応用編 →](07-advanced.md)
 
 > **この章の目標**：Gitのコマンド操作に加え、GitHub上でタスク管理・共同作業・自動テスト・Web公開を行うための主要機能を理解する。
 >
@@ -47,7 +47,7 @@ Gitはファイルの変更履歴を管理するツールです。一方、GitHu
 変更対象: janken.py
 ```
 
-Issue番号が `#12` なら、Pull Requestの説明に `Closes #12` と書くと、条件を満たすマージ時にIssueを自動で閉じられます。
+Issue番号が `#12` なら、Pull Requestの説明に `Closes #12` と書くと、同じリポジトリの既定ブランチ（この教材では `main`）にそのPRをマージしたときにIssueが自動で閉じます。別のリポジトリのIssueを指定する場合は `Closes 所有者/リポジトリ#12` と書きます。
 
 **ポイント**：Issueは単なるメモではなく、作業の完了条件を明確にするためにも使えます。
 
@@ -123,7 +123,11 @@ name: Python Test
 
 on:
   push:
+    branches: [main]
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -141,7 +145,7 @@ jobs:
 
 > **注意**：実運用ではActionsのバージョンや権限設定を公式ドキュメントで確認してください。
 
-ファイルをpushすると、**Actions** タブで実行結果を確認できます。失敗した場合はログを見て原因を調べます。
+この例は、`main` へのpushや、`main` などへのPRの作成・更新で実行されます。作業ブランチだけをpushした場合は、PRを開いてから確認します。PRの **Checks** またはリポジトリの **Actions** で実行結果を開き、失敗時はジョブの **Run tests** などのログを確認します。
 
 **実際のチーム開発での用途**：Pull Requestをマージする前に、自動テストが通るかを確認できます。
 
@@ -178,7 +182,7 @@ GitHub Pagesは、HTML・CSS・JavaScriptなどで作成した静的サイトを
 
 通常、プロジェクト用リポジトリの公開URLは `https://ユーザー名.github.io/リポジトリ名/` の形式です。公開まで少し時間がかかることがあります。プランやリポジトリの公開設定によって利用条件が異なる場合があります。
 
-**注意**：公開サイトにはパスワード・APIキー・個人情報を置かないでください。
+**注意**：プランによっては非公開リポジトリでもサイトが一般公開されます。公開URLのアクセス範囲を確認し、パスワード・APIキー・個人情報は置かないでください。
 
 公式：[GitHub Pagesのドキュメント](https://docs.github.com/ja/pages)
 
@@ -190,7 +194,7 @@ GitHub Pagesは、HTML・CSS・JavaScriptなどで作成した静的サイトを
 
 1. リポジトリの **Settings** を開く。
 2. **Rules → Rulesets** からブランチ用のルールを作成する（画面や権限によって表示が異なる場合があります）。
-3. 対象ブランチに `main` を指定する。
+3. 対象ブランチに `main` を指定する。対象の条件を確認し、他のブランチまで含まれていないことを確かめる。
 4. **Pull Requestを必須にする**、必要に応じて**承認レビュー**や**ステータスチェック**を要求する。
 5. ルールを有効化し、想定どおり制限されるか確認する。
 
@@ -237,6 +241,8 @@ GitHub Pagesは、HTML・CSS・JavaScriptなどで作成した静的サイトを
 
 ---
 
+[06章のミニ演習](exercise/06-features-exercise.md) ｜ [06章の回答例・解説](exercise/answer/06.md)
+
 ## 参考資料
 
 - [GitHub Docs（日本語）](https://docs.github.com/ja)
@@ -244,4 +250,4 @@ GitHub Pagesは、HTML・CSS・JavaScriptなどで作成した静的サイトを
 - [GitHub Actions](https://docs.github.com/ja/actions)
 - [GitHub Pages](https://docs.github.com/ja/pages)
 
-[← 05 便利なコマンド・小技](05-tips.md) ｜ [次へ：07 応用編 →](07-advanced.md) ｜ [目次に戻る](../README.md)
+[← 05 便利なコマンド・小技](05-tips.md) ｜ [次へ：07 応用編 →](07-advanced.md) ｜ [目次に戻る](../README.md#目次)
