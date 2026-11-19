@@ -1,6 +1,6 @@
 # 04 エラー・コンフリクト対処と変更の取り消し
 
-[← 目次に戻る](../README.md) ｜ [← 03 チーム開発](03-team.md)
+[← 目次に戻る](../README.md#目次) ｜ [← 03 チーム開発](03-team.md)
 
 > **対象**：01〜03章を終え、`add`・`commit`・`push`・`pull`・ブランチ・Pull Requestの基本を知っている人  
 > **目標**：エラーが出たときに状態を確認し、他の人の作業を消さずに復旧できるようになる。
@@ -39,20 +39,21 @@ error: failed to push some refs
 ### 対処
 
 1. `git status` で未コミットの変更がないことを確認します。変更があるなら先にコミットするか、必要に応じて退避します。
-2. `main` にいることを確認して、最新の変更を取り込みます。
+2. `git fetch origin` でGitHub側の情報を更新し、`git status` で現在のブランチと追跡先を確認します。
+3. 以下は**自分専用の練習リポジトリ**で、`main` にまだ送っていない自分のコミットがある場合の例です。共同開発では、`main` に直接pushせず、作業ブランチとPRを使います。
 
 ```bash
 git switch main
 git pull --rebase origin main
 ```
 
-3. 競合がなければ、次を実行します。
+4. 取り込みが成功したら、次を実行します。競合で止まったら4-3へ進みます。
 
 ```bash
 git push origin main
 ```
 
-> **注意**：`pull --rebase` はローカルのコミットを新しい履歴の上に積み直します。共同作業者が利用する共有ブランチの履歴を安易に書き換えないでください。作業方針が決まっているチームではそれに従います。単純な `git pull origin main`（merge方式）を使う運用もあります。
+> **注意**：`pull --rebase` はローカルのコミットを新しい履歴の上に積み直します。共同作業者が利用する共有ブランチの履歴を安易に書き換えないでください。作業方針が決まっているチームではそれに従います。merge方式を明示する場合は `git pull --no-rebase origin main` を使います。
 
 ## 4-3. コンフリクト（競合）が起きた
 
@@ -60,7 +61,7 @@ git push origin main
 
 同じファイルの近い行を別々に変更し、Gitが自動的に統合できないときです。例えば、2人が `README.md` の同じ見出しを書き換えた場合です。
 
-競合したファイルには、次のような印が入ることがあります。
+`git status` で競合したファイルを確認します。以下はrebase中にREADMEが競合したときの表示例です。
 
 ```text
 <<<<<<< HEAD
@@ -84,7 +85,7 @@ git rebase --continue
 さらに競合が出たら同じ手順を繰り返します。途中でコミットメッセージの編集画面が開いた場合は、保存して閉じると続行します。
 
 - **Vim**：`Esc` → `:wq` → Enter
-- **VSCode**：`Ctrl + S` で保存し、編集画面を閉じる
+- **VSCode**：`Ctrl + S`（Macは `Command + S`）で保存し、コミットメッセージのタブを閉じる
 
 最初からやり直したい場合は、状況を確認したうえで `git rebase --abort` を使います。**rebase中は `git merge --continue` ではなく `git rebase --continue`** です。
 
@@ -97,7 +98,7 @@ git add README.md
 git merge --continue
 ```
 
-競合解消後は `git status` で状態を確認し、必要に応じてpushします。
+競合解消後は `git status` で状態を確認し、必要に応じてpushします。マージを中止する場合は `git merge --abort` を使います。
 
 > **重要**：rebase中の `HEAD` やVSCodeの「Current / Incoming」の意味は、通常のmergeと直感的に異なることがあります。ラベルだけで判断せず、実際の変更内容を比較してください。
 
@@ -115,7 +116,7 @@ git pull --ff-only origin main
 git log --oneline -5
 ```
 
-取り消したいコミットが通常のコミット1件なら、該当するコミットIDを指定して取り消しコミットを作ります。
+取り消したいコミットが通常のコミット1件なら、該当するコミットIDを指定して取り消しコミットを作ります。以下のpushは自分専用の練習用リポジトリの例です。共有リポジトリでは、最新の `main` から作業ブランチを作り、そこでrevertしてPRで提案します。
 
 ```bash
 git revert <コミットID>
@@ -168,7 +169,7 @@ git diff
 git restore <ファイル名>
 ```
 
-`git restore` は指定ファイルの**未コミットの変更を失う**ので、差分を確認してから実行してください。
+この `git restore` は追跡済みファイルの作業内容をステージにある内容に戻します。指定したファイルの**未ステージの変更は失われる**ので、`git diff` で確認してから実行してください。
 
 ### `git add` しただけならステージから外す
 
@@ -184,7 +185,7 @@ git restore --staged <ファイル名>
 git commit --amend -m "修正したメッセージ"
 ```
 
-`--amend` はコミットIDが変わります。**すでにpushした共有コミットには安易に使わない**でください。
+メッセージだけ直す場合は、`git status` でステージ済みの変更がないことを先に確認します。`--amend` はコミットIDが変わります。**すでにpushした共有コミットには安易に使わない**でください。
 
 ## 4-6. 作業途中でpull・ブランチ切り替えができない
 
@@ -203,7 +204,18 @@ error: Your local changes to the following files would be overwritten
 ```bash
 git status
 git stash push -m "作業途中"
-git pull origin main
+git stash list
+```
+
+現在のブランチが `main` で、GitHub上の `main` を取り込む場合は、次を実行します。作業ブランチにいる場合は、まず取り込みたいブランチを確認してください。
+
+```bash
+git pull --ff-only origin main
+```
+
+pullが成功し、`git stash list` の先頭が今回の退避であることを確認してから戻します。
+
+```bash
 git stash pop
 ```
 
@@ -239,7 +251,7 @@ git stash pop
 4. `git restore --staged` と `git restore` の違いは？
 5. APIキーをpushしてしまった場合、`revert` だけで十分？
 
-> 回答例と実践演習は、後から `docs/exercise/` に追加する予定です。
+[04章のミニ演習](exercise/04-troubleshooting-exercise.md) ｜ [04章の回答例・解説](exercise/answer/04.md)
 
 ## 参考資料（公式）
 
@@ -252,4 +264,4 @@ git stash pop
 
 ---
 
-[← 03 チーム開発](03-team.md) ｜ [↑ 目次へ戻る](../README.md) | [→ 05 便利コマンド・小技](05-tips.md)
+[← 03 チーム開発](03-team.md) ｜ [↑ 目次へ戻る](../README.md#目次) | [→ 05 便利コマンド・小技](05-tips.md)
