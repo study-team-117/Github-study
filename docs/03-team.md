@@ -1,21 +1,27 @@
 # 03 チーム開発の基本：Pull Request・レビュー・マージ
 
-[← 目次に戻る](../README.md) ｜ [← 02 ブランチの操作](02-branch.md)
+[← 目次に戻る](../README.md#目次) ｜ [← 02 ブランチの操作](02-branch.md) ｜ [次へ：04 エラー・コンフリクト対処 →](04-troubleshooting.md)
 
 > **この章の目標**：作業ブランチで変更を作り、GitHub上でPull Request（PR）を提出し、レビューを経て `main` に反映できるようになる。
 >
 > **前提**：01章の `clone`・`commit`・`push`、02章のブランチ作成・切り替えを理解していること。
 >
-> **想定時間**：説明と操作確認で20〜30分程度（演習は別資料）。
+> **想定時間**：説明と操作確認で20〜30分程度。
 
 ## 3-1. チーム開発でブランチを使う理由
 
 複数人が同じ `main` ブランチを直接編集すると、作業の途中で他人の変更が入り、確認不足や競合が起こりやすくなります。そこで、通常は担当作業ごとにブランチを作成し、完成した変更を **Pull Request** で提案します。
 
-```text
-main ─────●──────────────●─────  ← 安定した変更をまとめる
-           \            /
-feature     ●──●──●─────        ← 自分の作業を進める
+```mermaid
+flowchart TD
+    A["作業ブランチで変更をコミット"] --> B["GitHubへpush"]
+    B --> Q{"PRは作成済み？"}
+    Q -->|いいえ| C["Pull Requestを作成"]
+    C --> D["差分を確認・レビュー"]
+    D -->|修正が必要| A
+    Q -->|はい、自動更新| D
+    D -->|確認完了| E["GitHub上でmainにマージ"]
+    E --> F["PCのmainをpullで更新"]
 ```
 
 **用語**
@@ -44,52 +50,60 @@ feature     ●──●──●─────        ← 自分の作業を�
 
 ## 3-3. 作業ブランチで変更を作る
 
+01章で使った自分の練習用リポジトリ `git-practice` で試せます。複数人で練習する場合は、対象リポジトリへのアクセス権と、誰がレビュー・マージするかを確認しておきます。
+
+[02章の演習](exercise/02.md)で `feature/branch-practice` をpush済みなら、そのブランチを使って3-4から始められます。その場合は、以降のブランチ名を `feature/branch-practice`、ファイル名を `branch-practice.md` に読み替えます。
+
 ### ① 最新のmainを取得する
 
 VSCodeのターミナル、Git Bash、PowerShellなどで、対象リポジトリのフォルダを開きます。
 
 ```bash
 git status
-git switch main
-git pull origin main
 ```
 
-`git status` で未コミットの変更がないことを確認してから切り替えましょう。未コミットの変更があると、切り替えやpullができない場合があります。
+`nothing to commit, working tree clean` を確認してから、次の2行を実行します。
+
+```bash
+git switch main
+git pull --ff-only
+```
+
+01章の手順でクローンした練習用リポジトリでは、`git pull` でGitHub上の同じブランチから変更を取り込めます。`--ff-only` を付けると履歴が分岐している場合に止まります。エラーが出たら、作業ブランチを作る前に[04章](04-troubleshooting.md)を確認します。
 
 ### ② 作業ブランチを作成する
 
 ```bash
-git switch -c feature/add-profile
+git switch -c docs/add-team-note
 ```
 
 `-c` は「新しいブランチを作って、そのブランチへ切り替える」という意味です。
 
 ### ③ ファイルを編集してcommitする
 
-例えば `profile.md` を新規作成し、次の内容を書きます。
+例えば `team-note.md` を新規作成し、次の内容を書きます。
 
 ```markdown
-# プロフィール
+# チーム開発メモ
 
-- 興味のある技術：Python、AI
-- 今後の目標：チームでアプリを作る
+- 変更を送る前に、作業ブランチと差分を確認する。
 ```
 
 その後、変更を確認してコミットします。
 
 ```bash
 git status
-git diff
-git add profile.md
-git commit -m "Add profile page"
+git add team-note.md
+git status
+git commit -m "Add team development note"
 ```
 
-新規ファイルは `git diff` だけでは内容が表示されないことがあります。`git status` で未追跡ファイルを確認し、`git add` 後は `git diff --staged` でステージした差分を確認できます。
+最初の `git status` では `Untracked files` に `team-note.md` が表示されます。2回目は `Changes to be committed` に今回のファイルだけが表示されていることを確認してからコミットします。行単位で確認したいときは `git diff --staged` を使えます。
 
 ### ④ GitHubへブランチをpushする
 
 ```bash
-git push -u origin feature/add-profile
+git push -u origin docs/add-team-note
 ```
 
 `-u` を付けると追跡先が設定され、次回以降は同じブランチで `git push` と省略しやすくなります。
@@ -98,15 +112,17 @@ git push -u origin feature/add-profile
 
 1. GitHubで対象リポジトリを開く。
 2. push後に表示される **Compare & pull request** を押す。表示されない場合は **Pull requests → New pull request** を選ぶ。
-3. **base: `main`**（取り込み先）、**compare: `feature/add-profile`**（変更元）になっているか確認する。
-4. タイトルと説明を入力する。
-5. **Create pull request** をクリックする。
+3. **base: `main`**（取り込み先）、**compare: `docs/add-team-note`**（変更元）になっているか確認する。
+4. 差分に意図したファイルだけが含まれていることを確認し、タイトルと説明を入力する。
+5. **Create pull request** をクリックする。作成後にPR番号（例：`#1`）と **Open** が表示されたことを確認する。
+
+<!-- スクリーンショット挿入候補（実画面）: PR作成画面のbase・compareと差分。 -->
 
 **PR説明の例**
 
 ```markdown
 ## 変更内容
-- profile.md を追加しました
+- team-note.md を追加しました
 
 ## 確認したこと
 - ファイルが正しく表示されることを確認しました
@@ -127,17 +143,21 @@ PRの **Files changed** タブで、追加・削除・変更された行を確�
 - 既存の機能を壊していないか
 - 動作確認の方法が書かれているか
 
-気になる行にはコメントを付けられます。GitHub上でレビューを依頼できる相手や承認の要否は、リポジトリの権限・設定によって異なります。
+複数人で練習する場合は、PR画面の **Reviewers** からレビュー担当者を選びます。依頼できる相手や承認の要否はリポジトリの権限・設定によって異なります。
+
+レビュー担当者は **Files changed** で差分を確認し、気になる行にコメントを付けられます。**Review changes** から、状況に応じて **Comment**（意見を伝える）、**Approve**（承認）、**Request changes**（修正を依頼）を選び、**Submit review** で送信します。個人練習では、差分を自分で確認してからマージへ進みます。承認が必須の設定では、承認できる別のメンバーに依頼してください。
+
+<!-- スクリーンショット挿入候補（実画面）: Files changedとReview changesのメニュー。 -->
 
 ### 指摘を受けたら
 
 PRを閉じて作り直す必要はありません。**同じ作業ブランチ**で修正してpushすると、PRに変更が追加されます。
 
 ```bash
-git switch feature/add-profile
+git switch docs/add-team-note
 # ファイルを修正する
-git add profile.md
-git commit -m "Revise profile page"
+git add team-note.md
+git commit -m "Revise team development note"
 git push
 ```
 
@@ -153,7 +173,7 @@ GitHubには代表的に次の統合方法があります。利用できる方�
 | Squash and merge | 複数コミットを1つにまとめて統合 | 細かい作業履歴を整理したい場合 |
 | Rebase and merge | コミットを並べ直して統合 | 履歴の仕組みを理解してから扱う |
 
-マージ後は、GitHub上で `main` に変更が反映されたことを確認します。作業ブランチは不要になったら削除できます。
+マージ方法を選び、確認画面で **Confirm merge** などを押します。PRが **Merged** になったことを確認し、GitHub上の `main` に切り替えて対象のファイルを開きます。作業ブランチは不要になったら削除できます。
 
 ## 3-7. ローカルのmainを最新にする
 
@@ -161,19 +181,19 @@ GitHubには代表的に次の統合方法があります。利用できる方�
 
 ```bash
 git switch main
-git pull origin main
+git pull --ff-only
 git log --oneline -5
 ```
 
-これでリモートの `main` の変更をローカルに取り込み、履歴を確認できます。
+`Fast-forward` と表示されれば、ローカルの `main` が進んでいます。`Already up to date.` の場合は取り込む更新がありません。VSCodeでマージしたファイルを開き、内容を確認します。
 
 作業ブランチが不要で、変更が統合済みであることを確認できたら、ローカル側も削除できます。
 
 ```bash
-git branch -d feature/add-profile
+git branch -d docs/add-team-note
 ```
 
-`-d` は安全確認付きの削除です。GitHub上のブランチ削除とは別操作です。
+`-d` は上流ブランチ（設定がなければ現在のブランチ）への取り込みを確認します。実行前に、PRが **Merged** であること、`main` に必要な変更があること、作業ブランチに残したい追加コミットがないことを確認してください。SquashやRebaseでマージした場合はコミットIDが変わり、状況によっては削除を拒否されます。その場合はブランチを残して構いません。GitHub上のブランチ削除は別操作です。
 
 ## 3-8. 複数人で作業するときの例
 
@@ -203,11 +223,15 @@ git branch -d feature/add-profile
 
 ### Q4. PRに「This branch has conflicts」と表示された
 
-取り込み先と変更元で競合する変更があります。競合の解消方法は **04 エラー・コンフリクト対処** で扱います。競合のあるPRは、そのままマージできない場合があります。
+取り込み先と変更元で競合する変更があります。競合の解消方法は [04 エラー・コンフリクト対処](04-troubleshooting.md) で扱います。競合のあるPRは、そのままマージできない場合があります。
 
 ### Q5. PRのレビューが終わらない
 
 変更範囲が大きすぎないか、説明が不足していないかを確認しましょう。小さく目的が明確なPRほど確認しやすくなります。
+
+### Q6. マージボタンが押せない
+
+PR画面に表示される理由を確認します。追加の承認、テストの成功、競合の解消、マージ権限が必要な場合があります。Draftの場合は、レビューに出せる状態になってから **Ready for review** を選びます。
 
 ## 3-10. 理解度チェック
 
@@ -223,12 +247,14 @@ git branch -d feature/add-profile
 1. 他人の作業や安定したコードへの影響を抑え、変更を確認してから統合するため。
 2. `base` は取り込み先、`compare` は変更元。
 3. 通常は不要。同じブランチで修正・pushすればPRが更新される。
-4. `git switch main` → `git pull origin main`。
+4. `git switch main` → `git pull --ff-only`。
 5. 同じファイルの同じ箇所などを双方が変更し、Gitが自動統合できない場合。
 
 </details>
 
 ---
+
+[03章のミニ演習でPRの作成からマージまでを試す](exercise/03.md)
 
 ## 参考資料（公式）
 
@@ -239,6 +265,4 @@ git branch -d feature/add-profile
 
 ---
 
-[← 02 ブランチの操作](02-branch.md) ｜ [← 目次に戻る](../README.md) ｜ [次へ：04 エラー・コンフリクト対処 →](04-troubleshooting.md)
-
-※ 04章のリンクは、対応するファイルを作成すると利用できます。
+[← 02 ブランチの操作](02-branch.md) ｜ [← 目次に戻る](../README.md#目次) ｜ [次へ：04 エラー・コンフリクト対処 →](04-troubleshooting.md)
