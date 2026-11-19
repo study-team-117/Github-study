@@ -254,7 +254,7 @@ PR画面に表示される理由を確認します。追加の承認、テスト
 
 ---
 
-[03章のミニ演習でPRの作成からマージまでを試す](exercise/03-team-exercise.md)
+[03章のミニ演習でPRの作成からマージまでを試す](exercise/03-team-exercise.md) ｜ [03章の回答例・解説](exercise/answer/03.md)
 
 ## 参考資料（公式）
 
