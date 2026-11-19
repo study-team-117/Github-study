@@ -3,7 +3,7 @@
 > 対象：01〜06章を学習し、ブランチ作成・Pull Request・マージを経験した人  
 > 目標：履歴の整理、変更の移植、復旧、原因調査、複数作業の並行管理を安全に行えるようになる。
 
-[← 目次へ戻る](../README.md)
+[← 目次へ戻る](../README.md#目次)
 
 ---
 
@@ -30,8 +30,8 @@ git log --oneline --graph --decorate -8
 
 ```text
 変更前： A---B---C  main
-         \
-          D---E    feature/login
+             \
+              D---E  feature/login
 
 変更後： A---B---C  main
                  \
@@ -48,7 +48,7 @@ git switch feature/login
 git rebase origin/main
 ```
 
-競合が発生したら、競合箇所を修正してから：
+作業ブランチのコミットだけが最新の `origin/main` の上に積み直されます。競合が発生したら、`git status` で対象を確認し、競合箇所を修正します。
 
 ```bash
 git add <修正したファイル>
@@ -72,10 +72,10 @@ git rebase --abort
 
 ## 7-3. `git cherry-pick`：特定のコミットだけ取り込む
 
-例えば、別ブランチで修正したバグ修正だけを、現在のブランチにも反映したい場合に使います。
+例えば、`feature/login` にある修正のうち1件だけを、`feature/report` に反映したい場合に使います。未コミットの変更を片付け、取り込み元の履歴でコミットIDを確認します。
 
 ```bash
-git log --oneline
+git log --oneline feature/login
 git switch feature/report
 git cherry-pick abc1234
 ```
@@ -137,7 +137,7 @@ git bisect good   # 正常なら
 git bisect bad    # 不具合があれば
 ```
 
-これを繰り返すと原因候補が絞り込まれます。終了後は必ず：
+これを繰り返すと原因候補が絞り込まれます。テストできない候補は `git bisect skip` で飛ばせますが、原因を1件に絞れない場合があります。結果を控えてから次を実行し、調査前のブランチやコミットに戻ります。
 
 ```bash
 git bisect reset
@@ -154,7 +154,7 @@ git bisect reset
 git worktree add -b feature/docs ../project-docs main
 ```
 
-これで `../project-docs` に新しい作業フォルダができます。片方で機能開発を続けながら、もう片方でドキュメントを修正できます。
+これで `../project-docs` に新しい作業フォルダができます。そのフォルダをVSCodeで開き、そこで編集やコミットを行います。片方で機能開発を続けながら、もう片方でドキュメントを修正できます。
 
 ```bash
 git worktree list
@@ -234,7 +234,7 @@ docs: READMEの手順を更新
 
 06章で紹介したActionsを、Pull Requestの品質確認に活用します。
 
-`.github/workflows/python-test.yml` を作成します。
+`.github/workflows/python-unittest.yml` を作成します。
 
 ```yaml
 name: Python tests
@@ -243,6 +243,9 @@ on:
   pull_request:
   push:
     branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -256,7 +259,7 @@ jobs:
         run: python -m unittest discover -s tests
 ```
 
-`tests/` 内に `unittest` 形式のテストがあることを前提とします。実際の開発では、外部Actionのバージョン更新や権限の最小化も確認しましょう。
+`tests/` 内に `unittest` 形式のテストがあることを前提とします。06章の `pytest` 用ワークフローと併用する場合も、こちらは `python-unittest.yml` に保存します。実際の開発では、外部Actionのバージョン更新や権限の最小化も確認しましょう。
 
 ## 7-10. 状況別コマンド早見表
 
@@ -278,7 +281,7 @@ jobs:
 5. 不具合が発生し始めたコミットを絞り込むコマンドは何ですか？
 6. 小規模な初心者チームでGitHub Flowを採用する利点は何ですか？
 
-> 演習問題と回答例は、後から `docs/exercise/` に追加する予定です。
+[07章のミニ演習](exercise/07-advanced-exercise.md) ｜ [07章の回答例・解説](exercise/answer/07.md)
 
 ---
 
@@ -286,4 +289,4 @@ jobs:
 
 応用コマンドは、使えること以上に**いつ使わないか**を判断することが重要です。共有ブランチの履歴を守り、作業前に状態を確認し、迷ったら安全なブランチを作って検証しましょう。
 
-[← 06 GitHubの便利な機能](06-features.md) ｜ [目次へ戻る](../README.md)
+[← 06 GitHubの便利な機能](06-features.md) ｜ [目次へ戻る](../README.md#目次)
