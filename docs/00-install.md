@@ -1,5 +1,7 @@
 # 00 Git・GitHubのインストールと初期設定
 
+[← 目次に戻る](../README.md#目次) ｜ [01 基本操作へ進む →](01-basic.md)
+
 > **対象**：Git・GitHubを初めて使う人  
 > **想定環境**：Windows 11（Mac・Linuxは補足あり）  
 > **所要時間**：約30〜45分（アカウント登録・ダウンロード状況によって変動）  
@@ -288,7 +290,7 @@ https://github.com/ユーザー名/リポジトリ名.git
 
 **次の章**では、リポジトリを作成し、`git clone` → 編集 → `git add .` → `git commit` → `git push` を実際に試します。
 
-[← 教材トップに戻る](../README.md)　｜　[次へ：01 基本操作](01-basic.md)
+[← 目次に戻る](../README.md#目次) ｜ [01 基本操作へ進む →](01-basic.md)
 
 ---
 
@@ -383,3 +385,4 @@ gh auth status
 
 ---
 
+[← 目次に戻る](../README.md#目次) ｜ [01 基本操作へ進む →](01-basic.md)
