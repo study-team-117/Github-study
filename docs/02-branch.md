@@ -1,6 +1,6 @@
 # 02 ブランチの操作
 
-[← 目次に戻る](../README.md) ｜ [← 01 基本操作](01-basic.md) ｜ [次へ：03 チーム開発 →](03-team.md)
+[← 目次に戻る](../README.md#目次) ｜ [← 01 基本操作](01-basic.md) ｜ [次へ：03 チーム開発 →](03-team.md)
 
 > **目安：20〜30分（解説・操作確認）**  
 > この章では、ブランチを作成し、切り替え、変更を記録してGitHubに公開するまでを学びます。Pull Requestや複数人でのマージは03章で扱います。
@@ -9,11 +9,9 @@
 
 ブランチ（branch）は、**同じリポジトリの中で作業の流れを分ける仕組み**です。たとえば、動作しているプログラムを `main` に残しながら、新機能を別のブランチで開発できます。
 
-```text
-main:        A ── B ────────────
-                  \
-feature:           C ── D
-```
+![コミットBから作業ブランチが分かれ、mainはBを、作業ブランチはDを指している図](../images/02-branch-history.png)
+
+A〜Dはコミットを表します。Bの時点で作業ブランチを作り、そこでCとDを記録すると、作業ブランチだけがDまで進みます。
 
 - `main`：基準となるブランチ。チームで決めた安定版を置くことが多い
 - `feature/...`：機能追加などの作業用ブランチ名の例
@@ -23,14 +21,14 @@ feature:           C ── D
 
 ## 2-2. 作業前の確認
 
-VSCodeでリポジトリのフォルダを開き、**ターミナル**（［ターミナル］→［新しいターミナル］）で以下を実行します。WindowsのPowerShellやGit Bashでも同じGitコマンドを使えます。
+01章で作った自分の練習用リポジトリ `git-practice` を使います。VSCodeでそのフォルダを開き、**ターミナル**（［ターミナル］→［新しいターミナル］）で以下を実行します。WindowsのPowerShellやGit Bashでも同じGitコマンドを使えます。
 
 ```bash
 git status
 git branch
 ```
 
-`git status` は作業中の変更があるか、`git branch` はローカルのブランチ一覧を表示します。`*` が付いたブランチが現在の作業先です。
+`git status` に `nothing to commit, working tree clean` と表示されれば、作業を始められます。`git branch` はローカルのブランチ一覧を表示します。`*` が付いたブランチが現在の作業先です。
 
 ```text
 * main
@@ -73,24 +71,25 @@ git switch feature/profile
 
 ## 2-4. 作業用ブランチでファイルを編集する
 
-`feature/profile` に切り替えた状態で、VSCodeから `profile.md` を作成し、次のように入力して保存します。
+`feature/profile` に切り替えた状態で、VSCodeで `branch-note.md` を新規作成し、次のように入力して保存します。
 
 ```markdown
-# プロフィール
+# ブランチの練習
 
 - 興味のある技術：Python
 - 学びたいこと：GitHubを使った共同開発
 ```
 
-変更内容を確認します。
+まず `git status` で `branch-note.md` だけが変更として表示されることを確認します。次に `git add .` を実行し、2回目の `git status` で `Changes to be committed` にそのファイルだけがあることを確かめてからコミットします。ほかに未ステージの変更がある場合は、`git add branch-note.md` で対象を指定できます。
 
 ```bash
 git status
-git add profile.md
-git commit -m "Add profile document"
+git add .
+git status
+git commit -m "Add branch practice note"
 ```
 
-**ポイント：** コミットは、現在チェックアウトしている `feature/profile` に記録されます。`main` に自動で反映されるわけではありません。
+**ポイント：** コミットに成功すると `[feature/profile a1b2c3d]` のようにブランチ名と短いコミットIDが表示されます。コミットは、現在選んでいる `feature/profile` に記録されます。`main` に自動で反映されるわけではありません。
 
 ## 2-5. ブランチをGitHubにpushする
 
@@ -102,13 +101,15 @@ git push -u origin feature/profile
 - `feature/profile`：pushするブランチ名
 - `-u`：今後の `git push` / `git pull` で参照する上流ブランチを設定する
 
-成功したらGitHubのリポジトリを開き、ブランチ選択メニューから `feature/profile` があることを確認してください。
+成功したらGitHubのリポジトリを開き、ブランチ選択メニューで `feature/profile` を選び、`branch-note.md` が表示されることを確認してください。
+
+<!-- スクリーンショット挿入候補（実画面）: GitHubのブランチ選択メニューと、feature/profile に切り替えた後のファイル一覧。 -->
 
 > **重要：** `push` はブランチをGitHubに送る操作です。**`main` に統合（merge）する操作ではありません。** 統合の方法は03章で説明します。
 
 ## 2-6. VSCodeからブランチを操作する
 
-コマンド以外にも、VSCodeの画面から操作できます。
+以下は、コマンドの代わりにVSCodeの画面で操作する場合の手順です。すでに作成・pushした場合は、ブランチ名をクリックして現在のブランチを確認するだけで構いません。
 
 1. VSCodeでGitリポジトリを開く。
 2. 画面左下などに表示される現在のブランチ名をクリックする（表示位置はバージョンやレイアウトによって異なります）。
@@ -134,7 +135,7 @@ git diff --stat main..feature/profile
 
 `main..feature/profile` は、`main` と `feature/profile` の差分を比較する指定です。`--stat` は変更ファイルと行数の概要を表示します。
 
-ここで `main` に切り替えると、`feature/profile` だけでコミットした `profile.md` は通常表示されません。もう一度作業ブランチに戻ると確認できます。
+`git diff --stat` の出力に `branch-note.md` があることを確認します。ここで `main` に切り替えると、作業ブランチで追加した `branch-note.md` はVSCodeのファイル一覧から消えます。もう一度作業ブランチに戻ると確認できます。
 
 ```bash
 git switch main
@@ -164,7 +165,7 @@ git switch main
 git branch -d feature/profile
 ```
 
-`-d` は未統合の変更があると削除を拒否する安全寄りの操作です。**この章ではまだマージしていないので、今は削除しないでください。**
+`-d` は、上流ブランチが設定されていればそこへ、設定されていなければ現在のブランチへ、コミットが取り込まれていることを確認します。この例では上流を設定しているため、03章で `main` への取り込みを確認してから削除します。**この章ではまだマージしていないので、今は削除しないでください。**
 
 GitHub側のブランチ削除は、統合後に03章で扱います。
 
@@ -188,7 +189,7 @@ git switch feature/profile
 
 ### `Permission denied` / `Authentication failed`
 
-GitHubへの認証に問題がある可能性があります。[00 インストール・初期設定](00-setup.md)の認証方法を確認してください。
+GitHubへの認証に問題がある可能性があります。[00 インストール・初期設定](00-install.md)の認証方法を確認してください。
 
 ## 2-11. 理解度チェック
 
@@ -215,4 +216,4 @@ GitHubへの認証に問題がある可能性があります。[00 インスト�
 
 ---
 
-[← 01 基本操作](01-basic.md) ｜ [目次に戻る](../README.md) ｜ [03 チーム開発へ →](03-team.md)
+[← 01 基本操作](01-basic.md) ｜ [目次に戻る](../README.md#目次) ｜ [03 チーム開発へ →](03-team.md)
