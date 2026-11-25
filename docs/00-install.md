@@ -326,7 +326,7 @@ GitHubの **Settings → Emails** で `noreply` アドレスを確認し、Git�
 
 ### 9-1. SSH鍵による認証
 
-SSH鍵は、秘密鍵を自分のPCに保管し、公開鍵をGitHubに登録する仕組みです。秘密鍵は**絶対に公開しない**でください。
+SSH鍵は、秘密鍵を自分のPCに保管し、公開鍵をGitHubに登録する仕組みです。秘密鍵は**絶対に公開しない**でください（プログラミング応用での認証はこっちでやった覚えがあります）。
 
 ```bash
 ssh-keygen -t ed25519 -C "your-email@example.com"
