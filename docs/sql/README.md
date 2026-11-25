@@ -81,6 +81,12 @@ DBMSは、データの保存・検索・更新を管理するソフトウェア�
    SELECT COUNT(*) AS product_count FROM products;
    ```
 
+   **実行結果**
+
+   | product_count |
+   | --- |
+   | 3 |
+
 次のSQLで、読み込んだ商品テーブルを表示できます。画面の出力を下の実行結果と見比べてください。
 
 ```sql
@@ -147,6 +153,14 @@ FROM products
 ORDER BY id;
 ```
 
+**実行結果**
+
+| name | price |
+| --- | --- |
+| ノート | 300 |
+| ペン | 150 |
+| マグカップ | 800 |
+
 `SELECT` の後に表示する列、`FROM` の後に表の名前を書きます。この例ではノート、ペン、マグカップの順に表示されます。全列を見たい場合は、列名の代わりに `*` を指定します。
 
 次に、在庫が5個以下の商品を、在庫の少ない順に表示します。
@@ -180,6 +194,12 @@ VALUES (4, '消しゴム', '文具', 100, 8);
 SELECT id, name, stock FROM products WHERE id = 4;
 ```
 
+**実行結果**
+
+| id | name | stock |
+| --- | --- | --- |
+| 4 | 消しゴム | 8 |
+
 `INSERT INTO` で表と列を指定し、`VALUES` に同じ順序で値を書きます。最後の検索で、消しゴムの在庫が8個と表示されます。
 
 #### 更新（UPDATE）
@@ -193,6 +213,18 @@ WHERE id = 4;
 
 SELECT id, name, stock FROM products WHERE id = 4;
 ```
+
+**変更前の結果**
+
+| id | name | stock |
+| --- | --- | --- |
+| 4 | 消しゴム | 8 |
+
+**変更後の結果**
+
+| id | name | stock |
+| --- | --- | --- |
+| 4 | 消しゴム | 10 |
 
 `SET` で変更する列と値を書きます。更新前は8個、更新後は10個と表示されます。
 
@@ -208,6 +240,16 @@ SELECT id, name FROM products WHERE id = 4;
 
 ROLLBACK;
 ```
+
+**変更前の結果**
+
+| id | name |
+| --- | --- |
+| 4 | 消しゴム |
+
+**変更後の結果**
+
+**実行結果：0行**
 
 削除後の検索では該当する行が表示されません。`ROLLBACK` で `BEGIN` 以降の操作を取り消します。変更を確定する場合に使う文は `COMMIT` です。
 
@@ -254,6 +296,12 @@ GROUP BY category
 HAVING SUM(stock) >= 10;
 ```
 
+**実行結果**
+
+| category | total_stock |
+| --- | --- |
+| 文具 | 15 |
+
 平均価格より高い商品を、副問い合わせで探します。結果は「マグカップ」です。
 
 ```sql
@@ -261,6 +309,12 @@ SELECT name
 FROM products
 WHERE price > (SELECT AVG(price) FROM products);
 ```
+
+**実行結果**
+
+| name |
+| --- |
+| マグカップ |
 
 注文がない商品を、`LEFT JOIN` と `IS NULL` で探します。結果は「ノート」です。
 
@@ -270,5 +324,100 @@ FROM products AS p
 LEFT JOIN order_items AS oi ON oi.product_id = p.id
 WHERE oi.id IS NULL;
 ```
+
+**実行結果**
+
+| name |
+| --- |
+| ノート |
+
+### ステップ6：基本文の一覧に出てきた書き方を試す
+
+#### テーブルを作って列を確かめる（CREATE TABLE）
+
+一時テーブルを作り、列の名前・型・主キーを確認します。
+
+```sql
+CREATE TEMP TABLE IF NOT EXISTS practice_tags (
+    id INTEGER PRIMARY KEY,
+    label TEXT NOT NULL UNIQUE
+);
+```
+
+```sql
+SELECT name, type, pk
+FROM pragma_table_info('practice_tags')
+ORDER BY cid;
+```
+
+| name | type | pk |
+| --- | --- | --- |
+| id | INTEGER | 1 |
+| label | TEXT | 0 |
+
+#### 複数の条件で絞る（AND・BETWEEN・IN・LIKE）
+
+文具のうち、価格が100〜500円で、商品名が「ペ」から始まるものを探します。
+
+```sql
+SELECT name, price
+FROM products
+WHERE category IN ('文具')
+  AND price BETWEEN 100 AND 500
+  AND name LIKE 'ペ%'
+ORDER BY id;
+```
+
+| name | price |
+| --- | --- |
+| ペン | 150 |
+
+#### 行ごとの計算と文字数（演算子・LENGTH）
+
+商品の名前の長さと、価格に在庫数を掛けた金額を表示します。
+
+```sql
+SELECT name, LENGTH(name) AS name_length, price * stock AS stock_value
+FROM products
+ORDER BY id;
+```
+
+| name | name_length | stock_value |
+| --- | --- | --- |
+| ノート | 3 | 3600 |
+| ペン | 2 | 450 |
+| マグカップ | 5 | 1600 |
+
+#### 2番目に高い商品を表示する（LIMIT・OFFSET）
+
+価格順に並べて、先頭の1件を飛ばして次の1件を取ります。
+
+```sql
+SELECT name, price
+FROM products
+ORDER BY price DESC, id ASC
+LIMIT 1 OFFSET 1;
+```
+
+| name | price |
+| --- | --- |
+| ノート | 300 |
+
+#### 2つの検索結果をまとめる（UNION）
+
+文具と在庫が2個以下の商品を、重複を取り除いて一覧にします。
+
+```sql
+SELECT name FROM products WHERE category = '文具'
+UNION
+SELECT name FROM products WHERE stock <= 2
+ORDER BY name;
+```
+
+| name |
+| --- |
+| ノート |
+| ペン |
+| マグカップ |
 
 [練習用データ](sample.sql) ｜ [演習に進む](exercise.md) ｜ [回答例を見る](answer.md)
