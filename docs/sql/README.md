@@ -69,7 +69,24 @@ DBMSは、データの保存・検索・更新を管理するソフトウェア�
 
 ## 3. 実際に動かしてみよう
 
-### 準備：SQLiteに練習データを読み込む
+### 準備：ブラウザでSQLiteを開く
+
+インストールせずに始める場合は、[SQLite Fiddle](https://sqlite.org/fiddle/)を開きます。
+
+1. SQLの入力欄に `SELECT 2 + 3 AS result;` と入力し、**Run** を押します。出力に `5` が表示されれば準備できています。
+2. [練習用データ（sample.sql）](sample.sql)を開き、ファイルの中身をすべてコピーします。Fiddleに戻り、入力欄の内容を置き換えて **Run** を押します。
+3. 同じタブの入力欄を次のSQLに置き換えて **Run** を押します。結果が `3` なら、商品データが読み込まれています。
+
+   ```sql
+   SELECT COUNT(*) AS product_count FROM products;
+   ```
+
+この後のSQL例も、同じタブで入力欄を置き換えて実行します。`no such table: products` と表示されたら、練習用データを読み込み直してください。最初からやり直す場合は新しいタブでFiddleを開き、練習用データを読み込みます。
+
+<details>
+<summary>PCにSQLiteを入れてVSCodeから試す方法</summary>
+
+
 
 SQLiteは、ターミナルで `sqlite3` を起動するとSQLを入力できるようになります。以下ではVSCodeのターミナルを使います。GitHub上で教材を読んでいる場合は、[練習用データ](sample.sql)をPCに保存するか、このリポジトリをクローンしておきます。
 
@@ -105,6 +122,8 @@ Homebrewを使っている場合は `brew install sqlite` で導入できます�
 SQL文の末尾には `;` を付けます。`.read` など、ドットで始まる行はSQLiteのコマンドライン専用の操作なので、末尾の `;` は不要です。
 
 準備ができたら、`.tables` を実行し、`products` と `order_items` があることを確かめます。`.schema products` では、サンプルの `CREATE TABLE` 文を確認できます。
+
+</details>
 
 ### ステップ1：データを読む（SELECT）
 
