@@ -43,3 +43,38 @@ ORDER BY order_items.id;
 |---:|---|---:|
 | 1 | ペン | 4 |
 | 2 | マグカップ | 1 |
+
+## 4. 在庫状況を表示する（CASE）
+
+```sql
+SELECT name, stock,
+       CASE WHEN stock <= 5 THEN '少ない' ELSE '十分' END AS stock_status
+FROM products
+ORDER BY id;
+```
+
+| name | stock | stock_status |
+| --- | ---: | --- |
+| ノート | 12 | 十分 |
+| ペン | 3 | 少ない |
+| マグカップ | 2 | 少ない |
+
+## 5. 注文一覧をビューにする（VIEW）
+
+```sql
+CREATE TEMP VIEW IF NOT EXISTS order_item_summary AS
+SELECT order_items.id, products.name, order_items.quantity
+FROM order_items
+JOIN products ON order_items.product_id = products.id;
+
+SELECT id, name, quantity
+FROM order_item_summary
+ORDER BY id;
+```
+
+| id | name | quantity |
+| ---: | --- | ---: |
+| 1 | ペン | 4 |
+| 2 | マグカップ | 1 |
+
+ビューに名前を付けておくと、結合を書く代わりにその名前で問い合わせられます。この一時ビューはSQLiteの現在の接続で使えます。
