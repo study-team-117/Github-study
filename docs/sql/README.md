@@ -4,6 +4,12 @@
 
 商品と注文明細のサンプルを使って、SQLiteでデータの検索・追加・更新・削除を練習し、最後に集計と結合を試します。
 
+## この教材でできるようになること
+
+- 必要な列や行を選び、結果を並べ替える。
+- 変更前に対象の行を確認し、追加・更新・削除を試す。
+- グループごとに集計し、別のテーブルと結び付ける。
+
 ## 1. SQLとは
 
 SQLは、データベースに「どのデータを読みたいか」「どのデータを追加・変更したいか」を伝える言語です。たとえば、在庫の少ない商品を探したり、カテゴリごとの在庫を集計したりできます。この教材では、SQLを実行するデータベースとして **SQLite** を使います。
@@ -419,5 +425,31 @@ ORDER BY name;
 | ノート |
 | ペン |
 | マグカップ |
+
+## 4. よくあるミス：NULLを比較する
+
+注文がない商品を探すとき、外部結合で対応する明細がない行の `oi.id` は `NULL` になります。次の2つを同じデータで試します。
+
+```sql
+SELECT p.name
+FROM products AS p
+LEFT JOIN order_items AS oi ON oi.product_id = p.id
+WHERE oi.id = NULL;
+```
+
+**実行結果：0行**。 `NULL` との比較は結果が不明になり、`WHERE` は条件が真の行だけを残します。
+
+```sql
+SELECT p.name
+FROM products AS p
+LEFT JOIN order_items AS oi ON oi.product_id = p.id
+WHERE oi.id IS NULL;
+```
+
+| name |
+| --- |
+| ノート |
+
+`IS NULL` は、値がないかどうかを判定します。ノートには対応する注文明細がないので1行表示されます。
 
 [練習用データ](sample.sql) ｜ [演習に進む](exercise.md) ｜ [回答例を見る](answer.md)
