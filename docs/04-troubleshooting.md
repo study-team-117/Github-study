@@ -1,6 +1,6 @@
 # 04 エラー・コンフリクト対処と変更の取り消し
 
-[← 目次に戻る](../README.md#目次) ｜ [← 03 チーム開発](03-team.md)
+[← 03 チーム開発](03-team.md) ｜ [目次に戻る](../README.md#目次) ｜ [05 便利なGitコマンド・小技 →](05-tips.md)
 
 > **対象**：01〜03章を終え、`add`・`commit`・`push`・`pull`・ブランチ・Pull Requestの基本を知っている人  
 > **目標**：エラーが出たときに状態を確認し、他の人の作業を消さずに復旧できるようになる。
@@ -251,7 +251,14 @@ git stash pop
 4. `git restore --staged` と `git restore` の違いは？
 5. APIキーをpushしてしまった場合、`revert` だけで十分？
 
-[04章のミニ演習](exercise/04-troubleshooting-exercise.md) ｜ [04章の回答例・解説](exercise/answer/04.md)
+---
+
+## 演習問題
+
+- [演習04：エラー・コンフリクト対処](exercise/04-troubleshooting-exercise.md)
+- [演習04：回答例・解説](exercise/answer/04.md)
+
+---
 
 ## 参考資料（公式）
 
@@ -264,4 +271,4 @@ git stash pop
 
 ---
 
-[← 03 チーム開発](03-team.md) ｜ [↑ 目次へ戻る](../README.md#目次) | [→ 05 便利コマンド・小技](05-tips.md)
+[← 03 チーム開発](03-team.md) ｜ [目次に戻る](../README.md#目次) ｜ [05 便利なGitコマンド・小技 →](05-tips.md)

@@ -1,6 +1,6 @@
 # 06 GitHubの便利な機能
 
-[← 目次に戻る](../README.md#目次) ｜ [← 05 便利なコマンド・小技](05-tips.md) ｜ [次へ：07 応用編 →](07-advanced.md)
+[← 05 便利なGitコマンド・小技](05-tips.md) ｜ [目次に戻る](../README.md#目次) ｜ [07 Git・GitHub応用編 →](07-advanced.md)
 
 > **この章の目標**：Gitのコマンド操作に加え、GitHub上でタスク管理・共同作業・自動テスト・Web公開を行うための主要機能を理解する。
 >
@@ -110,7 +110,6 @@ Pythonを準備してテストを実行
 
 def add(a, b):
     return a + b
-
 
 def test_add():
     assert add(2, 3) == 5
@@ -241,13 +240,18 @@ GitHub Pagesは、HTML・CSS・JavaScriptなどで作成した静的サイトを
 
 ---
 
-[06章のミニ演習](exercise/06-features-exercise.md) ｜ [06章の回答例・解説](exercise/answer/06.md)
+## 演習問題
 
-## 参考資料
+- [演習06：GitHubの便利な機能](exercise/06-features-exercise.md)
+- [演習06：回答例・解説](exercise/answer/06.md)
+
+---
+
+## 参考資料（公式）
 
 - [GitHub Docs（日本語）](https://docs.github.com/ja)
 - [GitHub Issues](https://docs.github.com/ja/issues)
 - [GitHub Actions](https://docs.github.com/ja/actions)
 - [GitHub Pages](https://docs.github.com/ja/pages)
 
-[← 05 便利なコマンド・小技](05-tips.md) ｜ [次へ：07 応用編 →](07-advanced.md) ｜ [目次に戻る](../README.md#目次)
+[← 05 便利なGitコマンド・小技](05-tips.md) ｜ [目次に戻る](../README.md#目次) ｜ [07 Git・GitHub応用編 →](07-advanced.md)
