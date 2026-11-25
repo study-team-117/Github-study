@@ -71,9 +71,28 @@ DBMSは、データの保存・検索・更新を管理するソフトウェア�
 
 ### 準備：SQLiteに練習データを読み込む
 
-SQLiteのコマンドラインツールを使います。ターミナルで `sqlite3 --version` を実行し、バージョンが表示されることを確認します。
+SQLiteは、ターミナルで `sqlite3` を起動するとSQLを入力できるようになります。以下ではVSCodeのターミナルを使います。GitHub上で教材を読んでいる場合は、[練習用データ](sample.sql)をPCに保存するか、このリポジトリをクローンしておきます。
 
-`docs/sql` フォルダのターミナルで `sqlite3 :memory:` を実行します。`sqlite>` が表示されたら、次を入力します。
+1. VSCodeで **ファイル → フォルダーを開く** を選び、`sample.sql` のある `docs/sql` フォルダを開きます。サンプルだけを保存した場合は、その保存先を開きます。
+2. **ターミナル → 新しいターミナル** を選びます。
+3. `sqlite3 --version` を入力します。バージョンが表示されたら `sqlite3 :memory:` で起動します。コマンドが見つからない場合は、以下のOS別手順に進みます。
+
+#### Windowsでコマンドが見つからない場合
+
+[SQLite公式のダウンロードページ](https://www.sqlite.org/download.html)の **Precompiled Binaries for Windows** から、PCに合う `sqlite-tools-win-…zip` を入手して展開します。エクスプローラーで展開先の `sqlite3.exe` を右クリックして「パスのコピー」を選びます。VSCodeのターミナル（PowerShell）で、例のパスをコピーしたパスに置き換えて実行します。
+
+```powershell
+& "C:\Tools\sqlite3.exe" --version
+& "C:\Tools\sqlite3.exe" :memory:
+```
+
+#### macOSでコマンドが見つからない場合
+
+Homebrewを使っている場合は `brew install sqlite` で導入できます。導入後、`"$(brew --prefix sqlite)/bin/sqlite3" --version` で確認し、`"$(brew --prefix sqlite)/bin/sqlite3" :memory:` で起動します。Homebrewを使っていない場合は、[SQLite公式のダウンロードページ](https://www.sqlite.org/download.html)の macOS用 `sqlite-tools-osx-…zip` を入手して展開し、展開したフォルダ内の `sqlite3` をFinderからVSCodeのターミナルにドラッグします。入力された実行ファイルのパスの後に半角スペースと `:memory:` を付けて実行します。
+
+#### 練習データを読み込む
+
+`sqlite>` と表示されたらSQLiteが開いています。そこに次の3行を1行ずつ入力します。
 
 ```text
 .read sample.sql
