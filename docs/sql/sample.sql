@@ -26,3 +26,8 @@ INSERT INTO order_items (id, product_id, quantity) VALUES
     (2, 3, 1);
 
 COMMIT;
+
+-- 読み込んだ商品をID順に表示する。
+SELECT id, name, category, price, stock
+FROM products
+ORDER BY id;
