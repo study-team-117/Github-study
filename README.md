@@ -34,6 +34,7 @@ GitやGitHubを初めて使う人を対象に、実際にコマンドを実行�
 
 - [SQL入門](docs/sql/README.md) — SQLiteでデータの絞り込み・集計・結合を練習します。
 - [AWS入門](docs/aws/README.md) — Amazon RekognitionとCustom Labelsを例に、画像の分類と料金の考え方を学びます。
+- [LLMアプリの設計入門](docs/llm/README.md) — Git・SQLの教材を参照して答えるアシスタントを題材に、検索と回答の評価を学びます。
 
 ## 学習時の注意
 
