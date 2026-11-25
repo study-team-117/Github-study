@@ -1,6 +1,6 @@
 # 03 チーム開発の基本：Pull Request・レビュー・マージ
 
-[← 目次に戻る](../README.md#目次) ｜ [← 02 ブランチの操作](02-branch.md) ｜ [次へ：04 エラー・コンフリクト対処 →](04-troubleshooting.md)
+[← 02 ブランチの操作](02-branch.md) ｜ [目次に戻る](../README.md#目次) ｜ [04 エラー・コンフリクト対処 →](04-troubleshooting.md)
 
 > **この章の目標**：作業ブランチで変更を作り、GitHub上でPull Request（PR）を提出し、レビューを経て `main` に反映できるようになる。
 >
@@ -52,7 +52,7 @@ flowchart TD
 
 01章で使った自分の練習用リポジトリ `git-practice` で試せます。複数人で練習する場合は、対象リポジトリへのアクセス権と、誰がレビュー・マージするかを確認しておきます。
 
-[02章の演習](exercise/02.md)で `feature/branch-practice` をpush済みなら、そのブランチを使って3-4から始められます。その場合は、以降のブランチ名を `feature/branch-practice`、ファイル名を `branch-practice.md` に読み替えます。
+[02章の演習](exercise/02-branch-exercise.md)で `feature/branch-practice` をpush済みなら、そのブランチを使って3-4から始められます。その場合は、以降のブランチ名を `feature/branch-practice`、ファイル名を `branch-practice.md` に読み替えます。
 
 ### ① 最新のmainを取得する
 
@@ -264,7 +264,12 @@ PR画面に表示される理由を確認します。追加の承認、テスト
 
 ---
 
-[03章のミニ演習でPRの作成からマージまでを試す](exercise/03-team-exercise.md) ｜ [03章の回答例・解説](exercise/answer/03.md)
+## 演習問題
+
+- [演習03：チーム開発](exercise/03-team-exercise.md)
+- [演習03：回答例・解説](exercise/answer/03.md)
+
+---
 
 ## 参考資料（公式）
 
@@ -275,4 +280,4 @@ PR画面に表示される理由を確認します。追加の承認、テスト
 
 ---
 
-[← 02 ブランチの操作](02-branch.md) ｜ [← 目次に戻る](../README.md#目次) ｜ [次へ：04 エラー・コンフリクト対処 →](04-troubleshooting.md)
+[← 02 ブランチの操作](02-branch.md) ｜ [目次に戻る](../README.md#目次) ｜ [04 エラー・コンフリクト対処 →](04-troubleshooting.md)

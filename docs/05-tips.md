@@ -1,6 +1,6 @@
 # 05 便利なGitコマンド・小技
 
-[← 目次に戻る](../README.md#目次) ｜ [← 04 エラー対処](04-troubleshooting.md) ｜ [次へ：06 GitHubの便利な機能 →](06-features.md)
+[← 04 エラー・コンフリクト対処](04-troubleshooting.md) ｜ [目次に戻る](../README.md#目次) ｜ [06 GitHubの便利な機能 →](06-features.md)
 
 > **対象**：01〜04章の基本操作を学んだ人  
 > **目安**：20〜30分（読むだけなら約15分）  
@@ -203,7 +203,12 @@ Markdownの見出しや相対リンクを使うと、教材の目次を作れま
 
 ---
 
-[05章のミニ演習](exercise/05-tips-exercise.md) ｜ [05章の回答例・解説](exercise/answer/05.md)
+## 演習問題
+
+- [演習05：便利なGitコマンド・小技](exercise/05-tips-exercise.md)
+- [演習05：回答例・解説](exercise/answer/05.md)
+
+---
 
 ## 参考資料（公式）
 
@@ -215,4 +220,4 @@ Markdownの見出しや相対リンクを使うと、教材の目次を作れま
 
 ---
 
-[← 04 エラー対処](04-troubleshooting.md) ｜ [目次に戻る](../README.md#目次) ｜ [06 GitHubの便利な機能 →](06-features.md)
+[← 04 エラー・コンフリクト対処](04-troubleshooting.md) ｜ [目次に戻る](../README.md#目次) ｜ [06 GitHubの便利な機能 →](06-features.md)

@@ -3,7 +3,7 @@
 > 対象：01〜06章を学習し、ブランチ作成・Pull Request・マージを経験した人  
 > 目標：履歴の整理、変更の移植、復旧、原因調査、複数作業の並行管理を安全に行えるようになる。
 
-[← 目次へ戻る](../README.md#目次)
+[← 06 GitHubの便利な機能](06-features.md) ｜ [目次に戻る](../README.md#目次)
 
 ---
 
@@ -281,12 +281,30 @@ jobs:
 5. 不具合が発生し始めたコミットを絞り込むコマンドは何ですか？
 6. 小規模な初心者チームでGitHub Flowを採用する利点は何ですか？
 
-[07章のミニ演習](exercise/07-advanced-exercise.md) ｜ [07章の回答例・解説](exercise/answer/07.md)
-
 ---
 
 ## まとめ
 
 応用コマンドは、使えること以上に**いつ使わないか**を判断することが重要です。共有ブランチの履歴を守り、作業前に状態を確認し、迷ったら安全なブランチを作って検証しましょう。
 
-[← 06 GitHubの便利な機能](06-features.md) ｜ [目次へ戻る](../README.md#目次)
+---
+
+## 演習問題
+
+- [演習07：Git・GitHub応用編](exercise/07-advanced-exercise.md)
+- [演習07：回答例・解説](exercise/answer/07.md)
+
+---
+
+## 参考資料（公式）
+
+- [git rebase](https://git-scm.com/docs/git-rebase)
+- [git cherry-pick](https://git-scm.com/docs/git-cherry-pick)
+- [git reflog](https://git-scm.com/docs/git-reflog)
+- [git bisect](https://git-scm.com/docs/git-bisect)
+- [git worktree](https://git-scm.com/docs/git-worktree)
+- [GitHub Flow](https://docs.github.com/ja/get-started/using-github/github-flow)
+
+---
+
+[← 06 GitHubの便利な機能](06-features.md) ｜ [目次に戻る](../README.md#目次)
