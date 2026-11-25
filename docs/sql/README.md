@@ -80,7 +80,7 @@ DBMSは、データの保存・検索・更新を管理するソフトウェア�
 インストールせずに始める場合は、[SQLite Fiddle](https://sqlite.org/fiddle/)を開きます。
 
 1. SQLの入力欄に `SELECT 2 + 3 AS result;` と入力し、**Run** を押します。出力に `5` が表示されれば準備できています。
-2. [練習用データ（sample.sql）](sample.sql)を開き、ファイルの中身をすべてコピーします。Fiddleに戻り、入力欄の内容を置き換えて **Run** を押します。
+2. [練習用データ（sample.sql）](sample.sql)を開き、ファイルの中身をすべてコピーします。Fiddleに戻り、入力欄の内容を置き換えて **Run** を押します。最後の `SELECT` で商品一覧が表示されます。
 3. 同じタブの入力欄を次のSQLに置き換えて **Run** を押します。結果が `3` なら、商品データが読み込まれています。
 
    ```sql
@@ -106,6 +106,17 @@ SELECT * FROM products ORDER BY id;
 | 3 | マグカップ | 雑貨 | 800 | 2 |
 
 この後のSQL例も、同じタブで入力欄を置き換えて実行します。`no such table: products` と表示されたら、練習用データを読み込み直してください。最初からやり直す場合は新しいタブでFiddleを開き、練習用データを読み込みます。
+
+#### `table products already exists` と表示されたら
+
+同じセッションに商品テーブルがすでにあります。入力欄から `sample.sql` の内容を消し、次の確認用SQLだけを実行します。
+
+```sql
+SELECT COUNT(*) AS product_count FROM products;
+SELECT COUNT(*) AS order_item_count FROM order_items;
+```
+
+商品が3件、注文明細が2件なら、そのまま次のSQL例に進めます。エラーが出たり件数が違ったりする場合は、新しいタブでFiddleを開き、`sample.sql` を1回だけ実行してから確認し直します。
 
 <details>
 <summary>PCにSQLiteを入れてVSCodeから試す方法</summary>
