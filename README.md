@@ -20,6 +20,8 @@ GitやGitHubを初めて使う人を対象に、実際にコマンドを実行�
 | [05 便利なGitコマンド・小技](docs/05-tips.md) | diff、log、stash、.gitignoreなど |
 | [06 GitHubの便利な機能](docs/06-features.md) | Issues、Projects、Actions、Pages、ブランチ保護 |
 | [07 Git・GitHub応用編](docs/07-advanced.md) | rebase、cherry-pick、reflog、bisect、worktree、運用戦略 |
+| [08 セキュリティと安全な開発](docs/08-security.md) | 秘密情報の管理、共有前の差分確認、漏えい時の初動 |
+| [09 チーム開発総合演習](docs/09-team-project.md) | Issueでの分担、相互レビュー、修正、マージ、競合解消 |
 
 ## 学習の進め方
 
@@ -27,14 +29,16 @@ GitやGitHubを初めて使う人を対象に、実際にコマンドを実行�
 2. **02〜03章：チーム開発** — ブランチを作成し、Pull Requestを通して変更を取り込む。
 3. **04〜05章：トラブル対応と便利な操作** — エラーへの対処方法や日常的に役立つコマンドを学ぶ。
 4. **06〜07章：機能紹介と応用** — GitHubの管理機能と、より高度なGit操作を学ぶ。
+5. **08〜09章：安全なチーム開発と総合演習** — 共有前の確認を練習し、ペアでIssueからマージまで進める。
 
-> **演習について**：各章の演習問題と回答例は、今後順次追加する予定です。
+> **演習について**：01〜09章の各ページ末尾から、演習問題と回答例を開けます。
 
 ## 補足教材
 
 - [SQL入門](docs/sql/README.md) — SQLiteでデータの絞り込み・集計・結合を練習します。
 - [AWS入門](docs/aws/README.md) — Amazon RekognitionとCustom Labelsを例に、画像の分類と料金の考え方を学びます。
 - [LLMアプリの設計入門](docs/llm/README.md) — Git・SQLの教材を参照して答えるアシスタントを題材に、検索と回答の評価を学びます。
+- [AI駆動開発入門](docs/ai-development/README.md) — AIの提案を差分と動作で確認し、採用理由をPull Requestに書きます。
 
 ## 学習時の注意
 

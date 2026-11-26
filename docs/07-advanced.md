@@ -3,7 +3,7 @@
 > 対象：01〜06章を学習し、ブランチ作成・Pull Request・マージを経験した人  
 > 目標：履歴の整理、変更の移植、復旧、原因調査、複数作業の並行管理を安全に行えるようになる。
 
-[← 06 GitHubの便利な機能](06-features.md) ｜ [目次に戻る](../README.md#目次)
+[← 06 GitHubの便利な機能](06-features.md) ｜ [目次に戻る](../README.md#目次) ｜ [08 セキュリティと安全な開発 →](08-security.md)
 
 ---
 
@@ -307,4 +307,4 @@ jobs:
 
 ---
 
-[← 06 GitHubの便利な機能](06-features.md) ｜ [目次に戻る](../README.md#目次)
+[← 06 GitHubの便利な機能](06-features.md) ｜ [目次に戻る](../README.md#目次) ｜ [08 セキュリティと安全な開発 →](08-security.md)
