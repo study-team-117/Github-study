@@ -4,19 +4,26 @@
 
 > **演習の目安**　基本 8〜10分・個人｜応用 10〜15分・個人｜発展 25〜35分・ペア
 >
-> 事前準備を終えてからの目安です。本編は演習中も参照できます。発展は時間内の完答を前提としません。
+> 所要時間は問題に取り組む時間の目安です。授業ではまず各課題の「準備」を一緒に行います。本編は演習中も参照できます。発展は時間内の完答を前提としません。
 
 ## 事前準備
 
-GitとVSCodeの準備を済ませ、担当者から配布された初期状態を開きます。各演習の初期状態は個別に用意します。ペアの場合は、作業担当と確認担当を先に決めます。
+[GitとVSCodeの初期設定](../00-install.md)を済ませ、下の手順を使ってその場で練習環境を作ります。前の演習の状態を使う場合は、各課題の準備欄に記載しています。
 
-教室で用意した練習専用の環境を使います。実際のプロジェクトや教材本体で作業したり、共有済みの履歴を書き換えたりしないでください。
+各課題はGitHubに接続しない練習用リポジトリで行います。課題ごとにVSCodeで空のフォルダを開きます。基本・応用では `git init -b main` を実行し、READMEを最初のコミットに記録します。
 
-[講師向けの準備](instructor-setup.md#07章の準備)
+実際のプロジェクトや教材本体で作業したり、共有済みの履歴を書き換えたりしないでください。
 
 ## 基本演習
 
 ### 共有前の作業ブランチの土台を更新する
+
+#### 準備
+
+1. READMEだけがある `main` から `practice/guide` を作り、`guide.md` に「# 学習ガイド」を書いてコミットします。
+2. `main` に戻り、READMEに「先に事前資料を読んでください。」と追記してコミットします。ここでの `main` のコミットIDを控え、統合せずに止めます。
+
+#### ここから演習
 
 **初期状態**　共有していない `practice/guide` と `main` が共通の起点から分かれており、双方に新しいコミットがあります。
 
@@ -28,6 +35,14 @@ GitとVSCodeの準備を済ませ、担当者から配布された初期状態�
 
 ### 別ブランチから公開対象の変更だけを取り込む
 
+#### 準備
+
+1. READMEだけがある `main` で `git branch practice/release` を実行し、公開用の作業先を用意します。
+2. `main` から `practice/draft` へ分かれ、`guide.md` に「# 公開用ガイド」を書いてコミットします。
+3. 同じブランチで `memo.md` に「# チーム内メモ」を書き、別のコミットにします。公開用ブランチにはまだ変更を入れません。
+
+#### ここから演習
+
 **初期状態**　`practice/draft` には公開できる `guide.md` の追加と、後から記録した `memo.md` の追加があります。作業先 `practice/release` は `main` と同じ状態です。
 
 **課題**　公開できる変更の記録だけを `practice/release` に取り込んでください。
@@ -37,6 +52,43 @@ GitとVSCodeの準備を済ませ、担当者から配布された初期状態�
 ## 発展演習
 
 ### 不具合が入った記録を特定し、後続の変更を保つ
+
+#### 準備
+
+ペアで取り組む場合は、検証担当が空のフォルダで以下の準備を実行し、調査担当に作業を交代します。個人の場合も同じ手順で準備できます。準備時の表示だけで判断せず、課題では履歴からコミットIDと根拠を確かめます。
+
+```bash
+git init -b main
+printf 'status=ready\n' > display.txt
+git add display.txt
+git commit -m "Prepare display"
+git tag practice-good
+printf '# 教材\n' > README.md
+git add README.md
+git commit -m "Add readme"
+printf '開始前に教材を読む。\n' > setup.md
+git add setup.md
+git commit -m "Add setup"
+printf '作業は練習環境で行う。\n' > guide.md
+git add guide.md
+git commit -m "Add guide"
+printf 'status=hidden\n' > display.txt
+git add display.txt
+git commit -m "Update display settings"
+printf '基本操作を練習する。\n' > lesson.md
+git add lesson.md
+git commit -m "Add lesson"
+printf '不明点は講師に確認する。\n' > faq.md
+git add faq.md
+git commit -m "Add FAQ"
+printf 'ブランチ：作業を分けるための目印。\n' > glossary.md
+git add glossary.md
+git commit -m "Add glossary"
+```
+
+作業フォルダに `display.txt` があり、8件の履歴と `practice-good` タグがあれば準備完了です。
+
+#### ここから演習
 
 **初期状態**　練習用の履歴は8件です。タグ `practice-good` の付いた最初のコミットは正常です。最新では `display.txt` の案内表示が失敗します。正常の判定は `display.txt` の先頭行が `status=ready` であることです。履歴には、その後も必要な変更が入っています。
 
