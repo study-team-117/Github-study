@@ -134,7 +134,7 @@ jobs:
         run: python -m pytest -q
 ```
 
-> **注意**：実運用ではActionsのバージョンや権限設定を公式ドキュメントで確認してください。
+> **注意**：実運用ではActionsのバージョンや権限設定を公式ドキュメントで確認してください。[08章のActionsの権限とSecrets](08-security.md#8-7-github-actionsの権限とsecrets)
 
 この例は、`main` へのpushや、`main` などへのPRの作成・更新で実行されます。作業ブランチだけをpushした場合は、PRを開いてから確認します。PRの **Checks** またはリポジトリの **Actions** で実行結果を開き、失敗時はジョブの **Run tests** などのログを確認します。
 

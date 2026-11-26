@@ -20,6 +20,7 @@ GitやGitHubを初めて使う人を対象に、実際にコマンドを実行�
 | [05 便利なGitコマンド・小技](docs/05-tips.md) | diff、log、stash、.gitignoreなど |
 | [06 GitHubの便利な機能](docs/06-features.md) | Issues、Projects、Actions、Pages、ブランチ保護 |
 | [07 Git・GitHub応用編](docs/07-advanced.md) | rebase、cherry-pick、reflog、bisect、worktree、運用戦略 |
+| [08 Git・GitHubのセキュリティ](docs/08-security.md) | 認証情報・公開範囲の管理、漏えい時の対応、安全なチーム開発とAI利用 |
 
 ## 学習の進め方
 
@@ -27,6 +28,7 @@ GitやGitHubを初めて使う人を対象に、実際にコマンドを実行�
 2. **02〜03章：チーム開発** — PCでブランチを作成し、ブラウザでPull Requestを確認して変更を取り込む。
 3. **04〜05章：トラブル対応と便利な操作** — エラーへの対処方法や日常的に役立つコマンドを学ぶ。
 4. **06〜07章：機能紹介と応用** — GitHubの管理機能と、より高度なGit操作を学ぶ。
+5. **08章：安全な開発** — 共有前の確認、漏えい時の初動、チームやAIツールに渡す権限を学ぶ。
 
 ### 推奨する開発環境
 

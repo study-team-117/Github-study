@@ -131,4 +131,4 @@ git commit -m "Add glossary"
 
 ---
 
-[← 07章の本編](../07-advanced.md) ｜ [目次に戻る](../../README.md#目次)
+[← 07章の本編](../07-advanced.md) ｜ [目次に戻る](../../README.md#目次) ｜ [08 Git・GitHubのセキュリティ →](../08-security.md)
