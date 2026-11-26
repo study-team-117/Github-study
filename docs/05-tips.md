@@ -84,6 +84,8 @@ git show --stat HEAD
 
 まだコミットしたくない変更がある状態で、別の作業をしたいときに使います。
 
+![作業中の変更をstashで退避し、別ブランチで緊急修正を済ませてから、元のブランチで作業を再開する](../images/diagrams/05-stash.svg)
+
 ```bash
 git stash push -m "README編集中"
 ```

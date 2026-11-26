@@ -92,15 +92,7 @@ GitHub Actionsでは、pushやPull Requestなどをきっかけに処理を実�
 
 ### 仕組み
 
-```text
-コードをpush / Pull Requestを作成
-              ↓
-GitHub Actionsが起動
-              ↓
-Pythonを準備してテストを実行
-              ↓
-成功・失敗をGitHub上で確認
-```
+![設定したイベントでワークフローが起動し、ランナーでジョブを実行して結果とログを確認する](../images/diagrams/06-actions-workflow.svg)
 
 ### Pythonの最小例
 

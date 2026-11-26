@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="474" viewBox="0 0 440 474" role="img" aria-labelledby="title desc">
+  <title id="title">stash：作業を一時退避する</title>
+  <desc id="desc">未追跡ファイルは通常のstashに含まれません。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="474" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">stash：作業を一時退避する</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">未追跡ファイルは通常のstashに含まれません。</text>
+    <rect x="36" y="88" width="368" height="56" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="122.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">機能Aを編集中</text>
+    <path d="M 220.0 148 V 167" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="36" y="172" width="368" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="207.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">編集中の変更を退避</text>
+    <text x="220.0" y="229.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">git stash push</text>
+    <path d="M 220.0 256 V 275" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="36" y="280" width="368" height="56" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="314.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">別ブランチで緊急修正</text>
+    <path d="M 220.0 340 V 359" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="36" y="364" width="368" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="399.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">元のブランチで作業を再開</text>
+    <text x="220.0" y="421.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">git stash pop</text>
+  </g>
+</svg>

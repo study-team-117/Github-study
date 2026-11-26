@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="357" viewBox="0 0 440 357" role="img" aria-labelledby="title desc">
+  <title id="title">商品と注文明細の関係</title>
+  <desc id="desc">1商品を複数の注文明細が参照できます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="357" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">商品と注文明細の関係</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">1商品を複数の注文明細が参照できます。</text>
+    <rect x="20" y="86" width="400" height="98" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="119.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">products（商品）</text>
+    <text x="220.0" y="141.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">id：主キー</text>
+    <text x="220.0" y="163.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">name：商品名／stock：在庫</text>
+    <path d="M 220 188 V 226" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <text x="236" y="215" font-size="18" font-weight="400" fill="#475569">1 対 多</text>
+    <rect x="20" y="233" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="269.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">order_items（注文明細）</text>
+    <text x="220.0" y="291.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">product_id：商品のidを参照</text>
+    <text x="220.0" y="313.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">quantity：注文明細の数量</text>
+  </g>
+</svg>

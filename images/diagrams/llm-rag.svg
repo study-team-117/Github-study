@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="470" viewBox="0 0 440 470" role="img" aria-labelledby="title desc">
+  <title id="title">RAG：教材を検索して回答する</title>
+  <desc id="desc">質問に関係する本文を回答の根拠にします。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="470" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">RAG：教材を検索して回答する</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">質問に関係する本文を回答の根拠にします。</text>
+    <rect x="36" y="87" width="368" height="56" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="121.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">受講者の質問</text>
+    <path d="M 220.0 147 V 176" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="36" y="181" width="368" height="56" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="215.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">教材データから関連する箇所を検索</text>
+    <path d="M 220.0 241 V 270" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="36" y="275" width="368" height="56" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="309.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">質問と見つけた本文をLLMに渡す</text>
+    <path d="M 220.0 335 V 364" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="36" y="369" width="368" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="404.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">回答と出典を表示</text>
+    <text x="220.0" y="426.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">出典は検索で取得した資料</text>
+  </g>
+</svg>
