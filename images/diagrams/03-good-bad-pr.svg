@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="365" viewBox="0 0 440 365" role="img" aria-labelledby="title desc">
+  <title id="title">PRの説明を比べる</title>
+  <desc id="desc">何を変え、どう確かめたかを伝えます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="365" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">PRの説明を比べる</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">何を変え、どう確かめたかを伝えます。</text>
+    <rect x="20" y="86" width="400" height="106" rx="10" fill="#ffffff" stroke="#9b3440" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#9b3440" text-anchor="middle">内容が伝わりにくい例</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">タイトル「修正しました」</text>
+    <text x="220.0" y="167.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">確認したことが書かれていない</text>
+    <rect x="20" y="208" width="400" height="138" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="250.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">変更と確認内容が伝わる例</text>
+    <text x="220.0" y="272.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">タイトル「使い方をREADMEに追加」</text>
+    <text x="220.0" y="294.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">変更：手順と参照先を追記</text>
+    <text x="220.0" y="316.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">確認：プレビューで表示とリンクを確認</text>
+  </g>
+</svg>

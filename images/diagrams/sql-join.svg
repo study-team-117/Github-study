@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="362" viewBox="0 0 440 362" role="img" aria-labelledby="title desc">
+  <title id="title">JOIN：対応する行を結び付ける</title>
+  <desc id="desc">products.id と order_items.product_id が等しい行を結び付けます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="362" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">JOIN：対応する行を結び付ける</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">products.id と order_items.product_id</text>
+    <text x="20" y="89" font-size="18" font-weight="400" fill="#475569">が等しい行を結び付けます。</text>
+    <rect x="20" y="110" width="182" height="106" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="111.0" y="147.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">products</text>
+    <text x="111.0" y="169.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">2：ペン</text>
+    <text x="111.0" y="191.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">3：マグカップ</text>
+    <rect x="218" y="110" width="202" height="106" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="319.0" y="147.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">order_items</text>
+    <text x="319.0" y="169.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">商品2：4個</text>
+    <text x="319.0" y="191.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">商品3：1個</text>
+    <path d="M 111 220 V 244 H 165 V 258" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <path d="M 319 220 V 244 H 275 V 258" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="264" width="400" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="299.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">SELECTの結果</text>
+    <text x="220.0" y="321.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">ペン：4個 ／ マグカップ：1個</text>
+  </g>
+</svg>

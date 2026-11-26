@@ -28,15 +28,7 @@ git log --oneline --graph --decorate -8
 
 自分の作業ブランチに、更新された `main` の変更を取り込み、履歴を直線的に整理できます。
 
-```text
-変更前： A---B---C  main
-             \
-              D---E  feature/login
-
-変更後： A---B---C  main
-                 \
-                  D'---E'  feature/login
-```
+![変更前はAとBを共有するmainと作業ブランチが分かれている。変更後はmainのCの上にDとEが新しいコミットとして並ぶ](../images/diagrams/07-rebase.svg)
 
 `D'` と `E'` は元のコミットと内容が似ていても、**別のコミットID**になります。
 
@@ -82,6 +74,8 @@ git cherry-pick abc1234
 
 `abc1234` は取り込みたいコミットIDの例です。取り込まれた変更には新しいコミットIDが付くのが一般的です。
 
+![取り込み元のコミットDの変更だけを取り込み先へ適用し、Fの後ろに新しいコミットDプライムができる](../images/diagrams/07-cherry-pick.svg)
+
 競合したら修正して：
 
 ```bash
@@ -100,6 +94,8 @@ git cherry-pick --abort
 ## 7-4. `git reflog`：操作履歴から復旧の手がかりを探す
 
 `git log` に見えなくなったコミットでも、ローカルの `reflog` に記録が残っていることがあります。
+
+![操作後に見えなくなったコミットCをreflogで見つけ、同じCを指す新しい復旧用ブランチを作る](../images/diagrams/07-reflog.svg)
 
 ```bash
 git reflog

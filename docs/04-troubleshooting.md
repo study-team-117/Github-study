@@ -104,6 +104,8 @@ git merge --continue
 
 ## 4-4. 間違えて `main` にpushしてしまった！
 
+![未コミットならステージと編集を分けて扱う。コミット済みなら共有状況を確認し、共有済みならrevertで打ち消す](../images/diagrams/04-troubleshooting-flow.svg)
+
 **最重要ポイント：push済みのコミットは、原則 `git revert` で打ち消します。** 共有履歴を消す `git reset --hard` ＋ `git push --force` は、他の人の作業を壊す危険があるため、初心者向けの復旧方法として使いません。
 
 ### ケースA：pushした内容に問題があるので取り消したい

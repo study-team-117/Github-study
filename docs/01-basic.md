@@ -214,18 +214,9 @@ Changes not staged for commit:
 
 ## 1-6. add → commit → pushでGitHubに反映する
 
-変更をGitHubに送るには、基本的に次の3段階を行います。
+エディターで保存した変更は、ステージ・コミット・pushの順でGitHubに反映します。
 
-```mermaid
-flowchart LR
-    A["作業フォルダ<br/>編集・保存したファイル"]
-    B["ステージ<br/>次に記録する内容"]
-    C["ローカルのコミット履歴"]
-    D["GitHubの履歴"]
-    A -->|"git add"| B
-    B -->|"git commit"| C
-    C -->|"git push"| D
-```
+![作業フォルダからステージへaddし、PCの履歴にcommitしてGitHubへpushする。pullはGitHubの更新を取得して現在のブランチへ取り込む](../images/diagrams/01-git-workflow.svg)
 
 ### ① 変更をステージングする
 

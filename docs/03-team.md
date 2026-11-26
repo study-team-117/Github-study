@@ -131,6 +131,8 @@ git push -u origin docs/add-team-note
 - 初回の共同開発練習です
 ```
 
+![「修正しました」だけのPRと、READMEの使い方を追加し表示とリンクを確認したことが分かるPRの比較](../images/diagrams/03-good-bad-pr.svg)
+
 **重要**：`base` と `compare` を逆にすると、意図しない変更を提案する可能性があります。作成前に必ず確認しましょう。
 
 ## 3-5. レビューで何を確認する？
