@@ -108,13 +108,24 @@ git push -u origin docs/add-team-note
 
 ## 3-4. Pull Requestを作成する（GitHubブラウザ）
 
-1. GitHubで対象リポジトリを開く。
-2. push後に表示される **Compare & pull request** を押す。表示されない場合は **Pull requests → New pull request** を選ぶ。
-3. **base: `main`**（取り込み先）、**compare: `docs/add-team-note`**（変更元）になっているか確認する。
-4. 差分に意図したファイルだけが含まれていることを確認し、タイトルと説明を入力する。
-5. **Create pull request** をクリックする。作成後にPR番号（例：`#1`）と **Open** が表示されたことを確認する。
+画像は別の練習用リポジトリの例です。画像の `feature/b` に当たる位置で、この章の作業ブランチ `docs/add-team-note` を選びます。画像をクリックすると拡大できます。
 
-<!-- スクリーンショット挿入候補（実画面）: PR作成画面のbase・compareと差分。 -->
+1. GitHubで対象リポジトリを開きます。
+2. push後に表示される **Compare & pull request** を押します。表示されない場合は **Pull requests → New pull request** を選びます。
+
+   <a href="../images/screenshots/03-pr-01-new.png"><img src="../images/screenshots/03-pr-01-new.png" alt="GitHubのPull requests一覧で右上のNew pull requestボタンを赤枠で示した画面" width="520"></a>
+
+3. **compare** のメニューを開き、変更元の作業ブランチを選びます。
+
+   <a href="../images/screenshots/03-pr-02-select-branch.png"><img src="../images/screenshots/03-pr-02-select-branch.png" alt="Compare changes画面でcompareのブランチ選択メニューを開き、feature/aとfeature/bの候補を赤枠で示した例" width="520"></a>
+
+4. **base: `main`**（取り込み先）、**compare: `docs/add-team-note`**（変更元）になっているか確認します。意図したファイルだけが差分に含まれていることを確かめます。比較画面から始めた場合は **Create pull request** を押して入力画面に進みます。
+
+   <a href="../images/screenshots/03-pr-03-compare.png"><img src="../images/screenshots/03-pr-03-compare.png" alt="差分の比較画面でbaseにmain、compareにfeature/bが選ばれ、Create pull requestボタンが表示された例" width="520"></a>
+
+5. タイトルと説明を入力し、入力画面の **Create pull request** を押して提出します。作成後にPR番号（例：`#1`）と **Open** が表示されたことを確認します。
+
+   <a href="../images/screenshots/03-pr-04-description.png"><img src="../images/screenshots/03-pr-04-description.png" alt="PRのタイトル欄・説明欄・提出用のCreate pull requestボタンを赤枠で示した画面" width="520"></a>
 
 **PR説明の例**
 
