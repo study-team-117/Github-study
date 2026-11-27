@@ -2,7 +2,7 @@
 
 [← 演習に戻る](exercise.md) ｜ [← SQL入門](README.md)
 
-## 1. 在庫が5個以下の商品
+## 演習1：在庫が5個以下の商品
 
 ```sql
 SELECT name, stock
@@ -16,7 +16,38 @@ ORDER BY stock ASC;
 | マグカップ | 2 |
 | ペン | 3 |
 
-## 2. カテゴリごとの在庫合計
+## 演習2：カテゴリと価格の範囲で絞り込む
+
+```sql
+SELECT name, price
+FROM products
+WHERE category = '文具' AND price BETWEEN 150 AND 300
+ORDER BY price, id;
+```
+
+| name | price |
+| --- | ---: |
+| ペン | 150 |
+| ノート | 300 |
+
+`BETWEEN` は150と300の両方を含みます。
+
+## 演習3：価格が2番目に高い商品を表示する
+
+```sql
+SELECT name, price
+FROM products
+ORDER BY price DESC, id
+LIMIT 1 OFFSET 1;
+```
+
+| name | price |
+| --- | ---: |
+| ノート | 300 |
+
+価格の高い順に並べたあと、先頭の1件を飛ばして1件を取得します。同じ価格の商品があればID順に並べます。
+
+## 演習4：カテゴリごとの在庫合計
 
 ```sql
 SELECT category, SUM(stock) AS total_stock
@@ -30,21 +61,22 @@ ORDER BY total_stock DESC;
 | 文具 | 15 |
 | 雑貨 | 2 |
 
-## 3. 注文明細の商品名と数量
+## 演習5：在庫合計が10個以上のカテゴリを表示する
 
 ```sql
-SELECT order_items.id, products.name, order_items.quantity
-FROM order_items
-JOIN products ON order_items.product_id = products.id
-ORDER BY order_items.id;
+SELECT category, SUM(stock) AS total_stock
+FROM products
+GROUP BY category
+HAVING SUM(stock) >= 10;
 ```
 
-| id | name | quantity |
-|---:|---|---:|
-| 1 | ペン | 4 |
-| 2 | マグカップ | 1 |
+| category | total_stock |
+| --- | ---: |
+| 文具 | 15 |
 
-## 4. 在庫状況を表示する（CASE）
+`HAVING` で、集計した結果が条件を満たすグループを選びます。
+
+## 演習6：在庫状況を表示する（CASE）
 
 ```sql
 SELECT name, stock,
@@ -59,7 +91,53 @@ ORDER BY id;
 | ペン | 3 | 少ない |
 | マグカップ | 2 | 少ない |
 
-## 5. 注文一覧をビューにする（VIEW）
+## 演習7：注文明細の商品名と数量
+
+```sql
+SELECT order_items.id, products.name, order_items.quantity
+FROM order_items
+JOIN products ON order_items.product_id = products.id
+ORDER BY order_items.id;
+```
+
+| id | name | quantity |
+|---:|---|---:|
+| 1 | ペン | 4 |
+| 2 | マグカップ | 1 |
+
+## 演習8：注文明細がない商品も一覧に表示する
+
+```sql
+SELECT p.name, oi.quantity
+FROM products AS p
+LEFT JOIN order_items AS oi ON oi.product_id = p.id
+ORDER BY p.id, oi.id;
+```
+
+| name | quantity |
+| --- | ---: |
+| ノート | NULL |
+| ペン | 4 |
+| マグカップ | 1 |
+
+`LEFT JOIN` で商品をすべて残します。ノートには対応する明細がないため、数量は `NULL` です。SQLiteのコマンドラインでは、既定で `NULL` が空欄に見えることがあります。
+
+## 演習9：平均価格より高い商品を表示する
+
+```sql
+SELECT name, price
+FROM products
+WHERE price > (SELECT AVG(price) FROM products)
+ORDER BY price, id;
+```
+
+| name | price |
+| --- | ---: |
+| マグカップ | 800 |
+
+かっこの中で商品全体の平均価格を求め、その値より高い商品を選びます。
+
+## 演習10：注文一覧をビューにする（VIEW）
 
 ```sql
 CREATE TEMP VIEW IF NOT EXISTS order_item_summary AS
@@ -79,85 +157,7 @@ ORDER BY id;
 
 ビューに名前を付けておくと、結合を書く代わりにその名前で問い合わせられます。この一時ビューはSQLiteの現在の接続で使えます。
 
-## 6. カテゴリと価格の範囲で絞り込む
-
-```sql
-SELECT name, price
-FROM products
-WHERE category = '文具' AND price BETWEEN 150 AND 300
-ORDER BY price, id;
-```
-
-| name | price |
-| --- | ---: |
-| ペン | 150 |
-| ノート | 300 |
-
-`BETWEEN` は150と300の両方を含みます。
-
-## 7. 価格が2番目に高い商品を表示する
-
-```sql
-SELECT name, price
-FROM products
-ORDER BY price DESC, id
-LIMIT 1 OFFSET 1;
-```
-
-| name | price |
-| --- | ---: |
-| ノート | 300 |
-
-価格の高い順に並べたあと、先頭の1件を飛ばして1件を取得します。同じ価格の商品があればID順に並べます。
-
-## 8. 在庫合計が10個以上のカテゴリを表示する
-
-```sql
-SELECT category, SUM(stock) AS total_stock
-FROM products
-GROUP BY category
-HAVING SUM(stock) >= 10;
-```
-
-| category | total_stock |
-| --- | ---: |
-| 文具 | 15 |
-
-`HAVING` で、集計した結果が条件を満たすグループを選びます。
-
-## 9. 注文明細がない商品も一覧に表示する
-
-```sql
-SELECT p.name, oi.quantity
-FROM products AS p
-LEFT JOIN order_items AS oi ON oi.product_id = p.id
-ORDER BY p.id, oi.id;
-```
-
-| name | quantity |
-| --- | ---: |
-| ノート | NULL |
-| ペン | 4 |
-| マグカップ | 1 |
-
-`LEFT JOIN` で商品をすべて残します。ノートには対応する明細がないため、数量は `NULL` です。SQLiteのコマンドラインでは、既定で `NULL` が空欄に見えることがあります。
-
-## 10. 平均価格より高い商品を表示する
-
-```sql
-SELECT name, price
-FROM products
-WHERE price > (SELECT AVG(price) FROM products)
-ORDER BY price, id;
-```
-
-| name | price |
-| --- | ---: |
-| マグカップ | 800 |
-
-かっこの中で商品全体の平均価格を求め、その値より高い商品を選びます。
-
-## 11. 商品を追加・更新・削除して元に戻す
+## 演習11：商品を追加・更新・削除して元に戻す
 
 練習データを読み込んだ接続で、上から順に実行します。
 
@@ -202,7 +202,7 @@ SELECT COUNT(*) AS product_count FROM products;
 
 `UPDATE` と `DELETE` の前に、直前の `SELECT` の結果で対象を確認します。`ROLLBACK` は練習中の変更を取り消します。
 
-## 12. 商品ごとの注文数量と在庫の不足数を集計する
+## 演習12：商品ごとの注文数量と在庫の不足数を集計する
 
 ```sql
 WITH order_totals AS (
@@ -228,7 +228,7 @@ ORDER BY shortage DESC, p.id;
 
 `WITH` で商品ごとの集計に名前を付けます。`LEFT JOIN` で注文がないノートも残し、`COALESCE` で集計結果の `NULL` を0に置き換えます。
 
-## 13. カテゴリ内の平均価格以上の商品を探す
+## 演習13：カテゴリ内の平均価格以上の商品を探す
 
 ```sql
 WITH category_prices AS (
