@@ -55,7 +55,13 @@ ORDER BY p.id;
 
 ## 発展演習：既存データを保って列を追加する
 
-SQLite CLIの `.read migrations/001-add-reorder-level.sql` で変更を適用します。`.read` はSQLite CLIのコマンドです。続けて以下を実行します。
+準備で使ったSQLiteを終了し、`docs/database` のターミナルで次を実行します。`-bail` は最初のエラーで停止するSQLite CLIのオプションです。途中で失敗すると `COMMIT` まで進まず、接続が閉じると未確定の変更は取り消されます。
+
+```bash
+sqlite3 -bail reorder-practice.db ".read migrations/001-add-reorder-level.sql"
+```
+
+成功したら `sqlite3 reorder-practice.db` で開き直し、次を実行します。
 
 ```sql
 SELECT id, stock, reorder_level FROM products ORDER BY id;
@@ -68,7 +74,7 @@ PRAGMA foreign_key_check;
 
 **PRの記入例**　「発注点を管理する列を追加しました。既存3商品は初期値5で、ID・在庫と明細2件は変更なしです。練習DBで適用履歴と外部キーを確認しました。失敗した場合は適用を中断し、確定の有無を確認します。未確定なら取り消し、確定済みなら修正用の変更や保管したコピーからの復元を検討します。」
 
-変更をトランザクション内で実行し、適用番号の重複を検出できるようにしています。練習用の変更ファイルと確認結果を共有すれば、DB本体をGitに入れずにチームで追跡できます。
+列を追加した後で適用履歴を記録し、両方を1つのトランザクションで確定します。別のツールで実行する場合も、最初のエラーで後続のSQLを止め、接続が開いていれば未確定の変更をロールバックします。エラーを無視して続行する設定では、変更内容と適用履歴が食い違うおそれがあります。練習用の変更ファイルと確認結果を共有すれば、DB本体をGitに入れずにチームで追跡できます。[SQLite CLI](https://sqlite.org/cli.html)・[SQLiteのトランザクション](https://sqlite.org/lang_transaction.html)
 
 ---
 

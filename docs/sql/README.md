@@ -115,14 +115,7 @@ SELECT * FROM products ORDER BY id;
 
 #### `table products already exists` と表示されたら
 
-同じセッションに商品テーブルがすでにあります。入力欄から `sample.sql` の内容を消し、次の確認用SQLだけを実行します。
-
-```sql
-SELECT COUNT(*) AS product_count FROM products;
-SELECT COUNT(*) AS order_item_count FROM order_items;
-```
-
-商品が3件、注文明細が2件なら、そのまま次のSQL例に進めます。エラーが出たり件数が違ったりする場合は、新しいタブでFiddleを開き、`sample.sql` を1回だけ実行してから確認し直します。
+同じセッションに商品テーブルがすでにあります。読み込みが途中で止まると、前回の商品が3件残っていても、トランザクションが開いたままになることがあります。Fiddleを新しいタブで開くか、SQLite CLIを終了して新しい `:memory:` のDBを開き、`sample.sql` を1回だけ読み込みます。その後、手順3の件数確認に進んでください。[SQLiteのトランザクション](https://sqlite.org/lang_transaction.html)
 
 <details>
 <summary>PCにSQLiteを入れてVSCodeから試す方法</summary>

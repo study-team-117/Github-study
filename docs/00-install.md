@@ -262,6 +262,8 @@ https://github.com/ユーザー名/リポジトリ名.git
 
 > **重要**：事前準備では、アカウントと認証の準備まで行います。**実際に変更を送れるかは01章のpush手順で確認します。** 事前準備の時点で認証画面が表示されなくても、異常とは限りません。
 
+**macOSでHTTPSを使う場合**　Command Line ToolsやHomebrewでGitを入れたら、GitHub CLIかGCMのどちらかを別途セットアップします。GitHub CLIを選んだ場合は `gh auth login` で GitHub.com と HTTPS を選び、`gh auth setup-git` でGitからも認証を使えるようにします。GCMを選ぶ場合は、公式手順のMac向けGCM設定に従います。[GitHubのmacOS向け認証手順](https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git?platform=mac)・[GitHub CLIの認証設定](https://cli.github.com/manual/gh_auth_setup-git)
+
 ### 6-2. 認証方法の比較
 
 | 方法 | 特徴 | この教材での扱い |

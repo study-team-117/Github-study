@@ -146,6 +146,8 @@ jobs:
 
 GitHub Pagesは、HTML・CSS・JavaScriptなどで作成した静的サイトを公開する機能です。サーバー側で動作するPythonやPHPのアプリを、そのまま実行する用途には向きません。
 
+**公開前の確認**　GitHub.comではGitHub Freeの公開リポジトリでPagesを使えます。非公開リポジトリを公開元にするにはGitHub Pro・Team・Enterprise Cloudのいずれかが必要です。リポジトリが非公開でもサイトは一般公開されることがあります。サイトの閲覧者を限定するには、組織がEnterprise Cloudを利用していることなどの条件があるため、公開前にサイトの閲覧範囲を確認し、パスワード・APIキー・個人情報は置かないでください。[Pagesの利用条件](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)・[サイトの閲覧制限](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site)
+
 ### 最小構成
 
 リポジトリのルートに `index.html` を作成します。
@@ -171,15 +173,15 @@ GitHub Pagesは、HTML・CSS・JavaScriptなどで作成した静的サイトを
 3. 公開元のブランチ（例：`main`）とフォルダ（例：`/(root)`）を指定して保存する。
 4. デプロイ完了後、表示される公開URLを開く。
 
-通常、プロジェクト用リポジトリの公開URLは `https://ユーザー名.github.io/リポジトリ名/` の形式です。公開まで少し時間がかかることがあります。プランやリポジトリの公開設定によって利用条件が異なる場合があります。
-
-**注意**：プランによっては非公開リポジトリでもサイトが一般公開されます。公開URLのアクセス範囲を確認し、パスワード・APIキー・個人情報は置かないでください。
+通常、プロジェクト用リポジトリの公開URLは `https://ユーザー名.github.io/リポジトリ名/` の形式です。公開まで少し時間がかかることがあります。
 
 公式：[GitHub Pagesのドキュメント](https://docs.github.com/ja/pages)
 
 ## 6-7. mainブランチを守る：Rulesets・ブランチ保護
 
 複数人で開発すると、誤って `main` に直接pushしてしまうことがあります。重要なブランチへの変更を制限するには、Rulesetsやブランチ保護の設定を使います。
+
+GitHub.comでは、リポジトリ単位のRulesetsはGitHub Freeの公開リポジトリで利用できます。非公開リポジトリではGitHub Pro・Team・Enterprise Cloudのいずれかが必要です。設定には、公開範囲にかかわらずルールを管理できる権限が必要です。
 
 ### 設定例
 
