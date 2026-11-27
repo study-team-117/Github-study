@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="394" viewBox="0 0 440 394" role="img" aria-labelledby="title desc">
+  <title id="title">コンテキストウィンドウ</title>
+  <desc id="desc">モデルが一度に扱えるトークンには上限。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="394" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">コンテキストウィンドウ</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">モデルが一度に扱えるトークンには上限。</text>
+    <rect x="20" y="88" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">入力に使うトークン</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">指示・会話履歴・検索資料・質問</text>
+    <rect x="20" y="180" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="215.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">回答に使うトークン</text>
+    <text x="220.0" y="237.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">出力に使う分も考えて入力を選ぶ</text>
+    <rect x="20" y="272" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="308.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">長い会話や資料を扱う</text>
+    <text x="220.0" y="330.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">関連する履歴と抜粋を残す</text>
+    <text x="220.0" y="352.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">上限や数え方はモデルごとに確認</text>
+  </g>
+</svg>

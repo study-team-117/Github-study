@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="450" viewBox="0 0 440 450" role="img" aria-labelledby="title desc">
+  <title id="title">トークン化と次トークン予測</title>
+  <desc id="desc">分割・確率は説明用の仮例です。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="450" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">トークン化と次トークン予測</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">分割・確率は説明用の仮例です。</text>
+    <rect x="20" y="88" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">入力を小さな単位に分ける</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">今日 ／ の ／ 天気 ／ は</text>
+    <path d="M 220 172 V 191" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="196" width="400" height="104" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="232.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">次のトークンの候補を予測</text>
+    <text x="220.0" y="254.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">晴れ 60% ／ 雨 25%</text>
+    <text x="220.0" y="276.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">曇り 10% ／ その他 5%</text>
+    <path d="M 220 304 V 323" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="328" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="364.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">選んだトークンを追加</text>
+    <text x="220.0" y="386.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">「今日の天気は 晴れ」から</text>
+    <text x="220.0" y="408.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">続きの候補を予測する</text>
+  </g>
+</svg>

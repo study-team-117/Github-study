@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="402" viewBox="0 0 440 402" role="img" aria-labelledby="title desc">
+  <title id="title">Attentionと文脈</title>
+  <desc id="desc">「猫が魚を食べた」を読むときの概念図です。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="402" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">Attentionと文脈</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">「猫が魚を食べた」を読むときの概念図です。</text>
+    <rect x="20" y="88" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">「食べた」の文脈を見る</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">「猫が」「魚を」などを参照</text>
+    <path d="M 220 172 V 191" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="196" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="231.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">参照する情報に重みを付ける</text>
+    <text x="220.0" y="253.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">位置や文脈に応じて情報を集める</text>
+    <path d="M 220 280 V 299" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="304" width="400" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="339.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">文脈を反映した表現を作る</text>
+    <text x="220.0" y="361.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">誰が何を食べたかを捉えやすくする</text>
+  </g>
+</svg>
