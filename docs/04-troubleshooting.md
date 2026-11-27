@@ -11,19 +11,19 @@
 
 ```bash
 git status
-git branch --show-current
-git log --oneline -5
+git branch
+git log --oneline
 git remote -v
 ```
 
 | コマンド | 確認できること |
 |---|---|
 | `git status` | 変更中のファイル、競合、rebase中かどうか |
-| `git branch --show-current` | 今いるブランチ（rebase中は空の場合あり） |
-| `git log --oneline -5` | 直近のコミット履歴 |
+| `git branch` | ローカルのブランチ一覧。通常は `*` が現在のブランチを示します。rebase中はブランチ名の代わりに作業中の状態が表示されることがあります |
+| `git log --oneline` | 現在の位置からたどれるコミット履歴を1件1行で表示 |
 | `git remote -v` | push先のリポジトリURL |
 
-必要に応じて `git fetch origin` でリモートの情報を更新し、`git log --oneline --graph --decorate --all -15` で分岐を確認します。`fetch` は通常、作業ファイルを直接変更しません。
+必要に応じて `git fetch origin` でリモートの情報を更新し、`git log --oneline --graph --all` でローカルとリモートの履歴の分岐を確認します。`fetch` は通常、作業ファイルを直接変更しません。
 
 ## 4-2. pushが拒否された（non-fast-forward）
 
@@ -138,10 +138,10 @@ PRの下部に競合の警告が出たら、**Resolve conflicts** を押して�
 ```bash
 git switch main
 git pull --ff-only origin main
-git log --oneline -5
+git log --oneline
 ```
 
-取り消したいコミットが通常のコミット1件なら、該当するコミットIDを指定して取り消しコミットを作ります。以下のpushは自分専用の練習用リポジトリの例です。共有リポジトリでは、最新の `main` から作業ブランチを作り、そこでrevertしてPRで提案します。
+`--ff-only` を付けると、履歴が分岐している場合はマージせずに止まります。取り消したいコミットが通常のコミット1件なら、該当するコミットIDを指定して取り消しコミットを作ります。以下のpushは自分専用の練習用リポジトリの例です。共有リポジトリでは、最新の `main` から作業ブランチを作り、そこでrevertしてPRで提案します。
 
 ```bash
 git revert <コミットID>
@@ -225,14 +225,16 @@ error: Your local changes to the following files would be overwritten
 **対処の選択肢**：
 
 1. 作業がまとまっていればコミットする
-2. 一時的に退避するなら `git stash push -m "作業途中"`
+2. 一時的に退避するなら `git stash`
 3. 退避後に操作し、`git stash pop` で変更を戻す（競合することもあります）
 
 ```bash
 git status
-git stash push -m "作業途中"
+git stash
 git stash list
 ```
+
+`Saved working directory and index state` と表示されれば退避できています。`No local changes to save` と出た場合は今回の退避がないため、あとで `git stash pop` を実行しないでください。
 
 現在のブランチが `main` で、GitHub上の `main` を取り込む場合は、次を実行します。作業ブランチにいる場合は、まず取り込みたいブランチを確認してください。
 

@@ -98,7 +98,7 @@ git push -u origin feature/profile
 
 - `origin`：通常、clone元のGitHubリポジトリに付く名前
 - `feature/profile`：pushするブランチ名
-- `-u`：今後の `git push` / `git pull` で参照する上流ブランチを設定する
+- `-u`：手元の作業ブランチとGitHub上の同名ブランチを関連付ける。以降は `git push` や `git pull` で毎回送り先・取得元を指定せずに済む
 
 成功したらGitHubのリポジトリを開き、ブランチ選択メニューで `feature/profile` を選び、`branch-note.md` が表示されることを確認してください。
 
@@ -123,8 +123,10 @@ git push -u origin feature/profile
 まず、作業ブランチのコミット履歴を確認します。
 
 ```bash
-git log --oneline --graph --all --decorate -10
+git log --oneline
 ```
+
+今回のコミットが先頭に表示されます。ブランチの分岐や合流を見る表示は[05章の履歴確認](05-tips.md#5-4-コミット履歴を見やすくするgit-log)で紹介します。
 
 次に、ブランチ間の変更ファイルを比較します。
 

@@ -18,7 +18,7 @@
     <path d="M 220.0 148 V 167" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
     <rect x="36" y="172" width="368" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
     <text x="220.0" y="207.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">編集中の変更を退避</text>
-    <text x="220.0" y="229.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">git stash push</text>
+    <text x="220.0" y="229.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">git stash</text>
     <path d="M 220.0 256 V 275" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
     <rect x="36" y="280" width="368" height="56" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
     <text x="220.0" y="314.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">別ブランチで緊急修正</text>

@@ -18,7 +18,8 @@ git log --oneline --graph --decorate -8
 ```
 
 - `git status` で未コミットの変更を確認する。
-- `git branch --show-current` で現在のブランチを確認する。
+- `git branch --show-current` は現在のブランチ名だけを表示する。ブランチから外れた状態では名前が表示されないため、`git status` で状況を確認する。
+- `git log` の例は分岐とブランチ名を表示し、直近8件に絞る。[05章の履歴確認](05-tips.md#5-4-コミット履歴を見やすくするgit-log)の応用。
 - 共有ブランチ（`main` など）の履歴を勝手に書き換えない。
 - `git push --force` は原則使わない。特にチームの `main` には行わない。
 

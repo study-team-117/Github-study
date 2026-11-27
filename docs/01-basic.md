@@ -345,8 +345,10 @@ Fast-forward
 | `git commit -m "READMEを更新"` | ステージした内容を履歴に記録する | `[main a1b2c3d]` のようにブランチ名と短いコミットIDが表示される |
 | `git push` | ローカルの `main` をGitHubに送る | 更新された場合は `main -> main` と表示される |
 | `git pull` | GitHub上の更新を現在のブランチに取り込む | `Fast-forward` は更新あり、 `Already up to date.` は更新なし |
-| `git log --oneline -5` | 現在のブランチの直近5件までのコミット履歴を見る | 1行に短いコミットIDとメッセージが表示される。例は `a1b2c3d READMEを更新` |
+| `git log --oneline` | 現在のブランチのコミット履歴を見る | 1行に短いコミットIDとメッセージが表示される。例は `a1b2c3d READMEを更新` |
 | `git remote -v` | リモートの名前とURLを確認する | `origin` の `(fetch)` が取得先、 `(push)` が送信先 |
+
+履歴がページ表示されて入力に戻れないときは `q` を押します。
 
 ---
 

@@ -193,10 +193,10 @@ GitHubには代表的に次の統合方法があります。利用できる方�
 ```bash
 git switch main
 git pull --ff-only
-git log --oneline -5
+git log --oneline
 ```
 
-`Fast-forward` と表示されれば、ローカルの `main` が進んでいます。`Already up to date.` の場合は取り込む更新がありません。VSCodeでマージしたファイルを開き、内容を確認します。
+`Fast-forward` と表示されれば、ローカルの `main` が進んでいます。`Already up to date.` の場合は取り込む更新がありません。履歴の上部にPRで取り込んだコミットがあることを確認し、VSCodeでマージしたファイルを開き、内容を確認します。
 
 作業ブランチが不要で、変更が統合済みであることを確認できたら、ローカル側も削除できます。
 
@@ -236,7 +236,7 @@ git branch -d docs/add-team-note
 
 ### Q2. `main` に直接commitしてしまった
 
-まだpushしていない場合と、すでにpushした場合で対処が異なります。慌てて `reset --hard` や強制pushを実行せず、まず `git status` と `git log --oneline -5` で状態を確認してください。
+まだpushしていない場合と、すでにpushした場合で対処が異なります。慌てて `reset --hard` や強制pushを実行せず、まず `git status` と `git log --oneline` で状態を確認してください。
 
 ### Q3. `git push` が拒否された
 
