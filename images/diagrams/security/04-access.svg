@@ -20,6 +20,6 @@
     <rect x="20" y="204" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
     <text x="220.0" y="240.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">Private</text>
     <text x="220.0" y="262.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">閲覧は権限のある人や連携に限定</text>
-    <text x="220.0" y="284.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">読み取りだけならReadを選ぶ</text>
+    <text x="220.0" y="284.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">組織所有では Read で閲覧専用にできる</text>
   </g>
 </svg>

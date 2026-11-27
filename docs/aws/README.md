@@ -31,7 +31,7 @@ Amazon Rekognitionは、画像や動画から情報を取り出すAWSのサー�
 
 既成のラベルで目的を満たせるかをまず確かめます。必要な分類が得られないときは、Custom Labelsで画像と正解ラベルを用意して、専用のモデルを学習します。
 
-[Amazon Rekognitionのラベル検出](https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/labels.html) ｜ [Amazon Rekognition Custom Labels](https://aws.amazon.com/jp/rekognition/custom-labels/)
+[Amazon Rekognitionのラベル検出](https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/labels.html) ｜ [Amazon Rekognition Custom Labels](https://docs.aws.amazon.com/ja_jp/rekognition/latest/customlabels-dg/what-is.html)
 
 ## 3. Custom Labelsでモデルを作る流れ
 
@@ -72,7 +72,7 @@ Amazon Rekognitionは、画像や動画から情報を取り出すAWSのサー�
 ## 5. 料金が発生する箇所
 
 - **一般の画像ラベル検出**では、主に処理した画像の枚数に応じて料金が決まります。
-- **Custom Labels**では、主にモデルの学習に使った時間と、推論できる状態でモデルを稼働させた時間が課金対象です。起動中は画像を送っていない時間も費用がかかり得ます。
+- **Custom Labels**では、学習と推論にそれぞれ費用がかかります。学習を並列処理すると、請求対象の学習時間が実際の経過時間を上回ることがあります。推論はモデルの稼働時間と推論ユニット数に応じて課金されます。たとえば2ユニットで1時間稼働すると、推論2時間分が請求対象です。画像を送っていない間も、モデルが稼働していれば費用がかかります。[推論ユニットと課金の仕組み](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/running-model.html)
 - 画像をAmazon S3に保存する場合は、保存容量やリクエストなどの料金も確認します。モデルを停止しても、残っているS3のデータは別に扱われます。
 
 無料枠やクレジットは、サービス・アカウント・期間で適用条件が異なります。実習前に、授業で使うアカウントとリージョンの料金を確認してください。

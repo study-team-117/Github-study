@@ -228,9 +228,20 @@ docs: READMEの手順を更新
 
 ## 7-9. GitHub Actions応用：Pythonのテストを自動実行する
 
-06章で紹介したActionsを、Pull Requestの品質確認に活用します。
+06章で紹介したActionsを、Pull Requestの品質確認に活用します。この例では、リポジトリのルートに `tests/` があり、`unittest` のテストを検出できることが前提です。06章の `pytest` 用サンプルとは別に、練習用リポジトリで `tests/test_sample.py` を用意します。
 
-`.github/workflows/python-unittest.yml` を作成します。
+```python
+import unittest
+
+
+class SampleTests(unittest.TestCase):
+    def test_sum(self):
+        self.assertEqual(sum([2, 3]), 5)
+```
+
+リポジトリのルートで `python -m unittest discover -s tests` を実行し、`Ran 1 test` と `OK` を確認します。macOSなどでは `python3`、Windowsでは `py -3` も使えます。
+
+次に `.github/workflows/python-unittest.yml` を作成し、テストファイルと一緒にコミットします。
 
 ```yaml
 name: Python tests
@@ -255,7 +266,7 @@ jobs:
         run: python -m unittest discover -s tests
 ```
 
-`tests/` 内に `unittest` 形式のテストがあることを前提とします。06章の `pytest` 用ワークフローと併用する場合も、こちらは `python-unittest.yml` に保存します。実際の開発では、外部Actionのバージョン更新や権限の最小化も確認しましょう。
+Actionsでは **Run tests** のログを開き、テストが1件実行されて成功したことを確認します。既存のプロジェクトで使う場合は、実行された件数が想定どおりかを確かめます。実際の開発では、外部Actionのバージョン更新や権限の最小化も確認しましょう。[Pythonのテスト検出](https://docs.python.org/3.12/library/unittest.html#test-discovery)
 
 ## 7-10. 状況別コマンド早見表
 

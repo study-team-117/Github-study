@@ -28,7 +28,9 @@
 
 公開範囲と書き込み権限は別です。Publicにしても、閲覧者に元のリポジトリへの書き込み権限は付きません。組織のリポジトリでは、閲覧だけのメンターには `Read`、変更を共同で進めるメンバーには必要に応じて `Write` を割り当てます。設定管理を担当する人に管理権限を絞る考え方が**最小権限**です。チーム経由で持っている権限も確認し、作業が終わったら不要になったアクセスを見直します。[GitHubのリポジトリ公開範囲](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories#about-repository-visibility)・[組織リポジトリのロール](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization)
 
-![Publicなら閲覧は誰でもできるが、書き込みは権限が必要。Privateでは閲覧も権限で制限する](../images/diagrams/security/04-access.svg)
+個人アカウントが所有するPrivateリポジトリでは、招待した共同作業者に書き込み権限も付きます。特定の人に閲覧だけを許可したい場合は、組織が所有するリポジトリで `Read` を割り当てられるか確認します。[個人リポジトリの権限](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-levels-for-a-personal-account-repository)
+
+![Publicは誰でも閲覧でき、Privateは許可された人や連携だけが閲覧できる。組織所有の場合はReadで閲覧専用にできる](../images/diagrams/security/04-access.svg)
 
 ## 8-3. アカウントと認証情報を守る
 
