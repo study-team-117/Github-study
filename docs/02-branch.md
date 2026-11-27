@@ -66,7 +66,7 @@ git switch main
 git switch feature/profile
 ```
 
-> **補足：** 古い解説では `git checkout -b feature/profile` を使う場合があります。ブランチ作成・切り替えだけなら、目的が分かりやすい `git switch` をおすすめします。
+> **補足：** 古い解説の `git checkout -b feature/profile` もブランチを作って切り替えます。`-b` を省いた `git checkout feature/profile` は、この例では既存のブランチに切り替えるときに使います。ブランチ作成・切り替えだけなら、目的が分かりやすい `git switch` をおすすめします。
 
 ## 2-4. 作業用ブランチでファイルを編集する
 
@@ -98,7 +98,7 @@ git push -u origin feature/profile
 
 - `origin`：通常、clone元のGitHubリポジトリに付く名前
 - `feature/profile`：pushするブランチ名
-- `-u`：手元の作業ブランチとGitHub上の同名ブランチを関連付ける。以降は `git push` や `git pull` で毎回送り先・取得元を指定せずに済む
+- `-u`：手元の作業ブランチとGitHub上の同名ブランチを関連付ける。以降は `git push` や `git pull` で毎回送り先・取得元を指定せずに済む。省くとこのpushでブランチは送れるが、通常は関連付けが作られない
 
 成功したらGitHubのリポジトリを開き、ブランチ選択メニューで `feature/profile` を選び、`branch-note.md` が表示されることを確認してください。
 
@@ -134,7 +134,7 @@ git log --oneline
 git diff --stat main..feature/profile
 ```
 
-`main..feature/profile` は、`main` と `feature/profile` の差分を比較する指定です。`--stat` は変更ファイルと行数の概要を表示します。
+`main..feature/profile` は、`main` と `feature/profile` の差分を比較する指定です。`--stat` は変更ファイル名と追加・削除の行数を一覧にします。まず影響範囲を確認したいときに使います。省くと変更した行の内容が表示されます。
 
 `git diff --stat` の出力に `branch-note.md` があることを確認します。ここで `main` に切り替えると、作業ブランチで追加した `branch-note.md` はVSCodeのファイル一覧から消えます。もう一度作業ブランチに戻ると確認できます。
 
@@ -166,7 +166,7 @@ git switch main
 git branch -d feature/profile
 ```
 
-`-d` は、上流ブランチが設定されていればそこへ、設定されていなければ現在のブランチへ、コミットが取り込まれていることを確認します。この例では上流を設定しているため、03章で `main` への取り込みを確認してから削除します。**この章ではまだマージしていないので、今は削除しないでください。**
+引数なしの `git branch` はブランチを一覧表示します。`-d` と名前を指定すると、ブランチを安全に整理できます。上流ブランチ（未設定なら現在のブランチ）にコミットが取り込まれていなければ、削除を拒否します。この例では上流を設定しているため、03章で `main` への取り込みを確認してから削除します。**この章ではまだマージしていないので、今は削除しないでください。**
 
 GitHub側のブランチ削除は、統合後に03章で扱います。
 

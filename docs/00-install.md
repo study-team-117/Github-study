@@ -191,7 +191,7 @@ git config --global user.email "your-email@example.com"
 ```
 
 - `git config`：Gitの設定を変更・確認するコマンド
-- `--global`：現在のPCユーザーに対する共通設定。リポジトリ単位の設定ではありません
+- `--global`：現在のPCユーザーの共通設定に保存し、各リポジトリの既定値として使います。設定を書き込むときに省略すると、通常は今いるリポジトリだけに保存します
 - `user.name`：コミットに記録する作成者名
 - `user.email`：コミットに記録するメールアドレス
 
@@ -209,7 +209,7 @@ git config --global user.email "GitHubで確認したnoreplyアドレス"
 
 ### 5-2. 初期ブランチ名を設定する（任意）
 
-PCで `git init` を使って新しいリポジトリを作る場合に、最初のブランチ名を `main` にする設定です。01章のクローンではGitHub側の既定ブランチを使うので、この設定は省略できます。
+PCで `git init` を使って新しいリポジトリを作る場合に、最初のブランチ名を `main` にする設定です。01章のクローンではGitHub側の既定ブランチを使うので、この設定は省略できます。演習で使う `git init -b main` は、作成するリポジトリの最初のブランチ名をその場で指定します。`-b` を省くとGitの設定や既定値に従います。
 
 ```bash
 git config --global init.defaultBranch main

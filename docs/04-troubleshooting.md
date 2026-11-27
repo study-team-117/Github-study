@@ -23,7 +23,7 @@ git remote -v
 | `git log --oneline` | 現在の位置からたどれるコミット履歴を1件1行で表示 |
 | `git remote -v` | push先のリポジトリURL |
 
-必要に応じて `git fetch origin` でリモートの情報を更新し、`git log --oneline --graph --all` でローカルとリモートの履歴の分岐を確認します。`fetch` は通常、作業ファイルを直接変更しません。
+必要に応じて `git fetch origin` でリモートの情報を更新し、`git log --oneline --graph --all` でローカルとリモートの履歴を見比べます。上の `git log --oneline` に `--graph` を加えると分岐・合流が線で見え、`--all` を加えると現在のブランチ以外の履歴も確認できます。[05章の履歴確認](05-tips.md#5-4-コミット履歴を見やすくするgit-log)も参照してください。`fetch` は通常、作業ファイルを直接変更しません。
 
 ## 4-2. pushが拒否された（non-fast-forward）
 
@@ -53,7 +53,7 @@ git pull --rebase origin main
 git push origin main
 ```
 
-> **注意**：`pull --rebase` はローカルのコミットを新しい履歴の上に積み直します。共同作業者が利用する共有ブランチの履歴を安易に書き換えないでください。作業方針が決まっているチームではそれに従います。merge方式を明示する場合は `git pull --no-rebase origin main` を使います。
+> **注意**：`--rebase` を付けると、手元だけにあるコミットを取得した履歴の上に積み直すため、取り込み用のマージコミットを作らずに済みます。省略すると統合方法は設定などに従い、分岐時にマージする、rebaseする、停止するなど動作が変わります。[07章のrebase](07-advanced.md#7-2-git-rebaseブランチの起点を移動する)も参照してください。共同作業者が利用する共有ブランチの履歴を安易に書き換えないでください。作業方針が決まっているチームではそれに従います。merge方式を明示する場合は `git pull --no-rebase origin main` を使います。
 
 ## 4-3. コンフリクト（競合）が起きた
 
@@ -204,7 +204,7 @@ git restore <ファイル名>
 git restore --staged <ファイル名>
 ```
 
-これは通常、作業ファイルの変更内容は残したまま、ステージだけを解除します。
+`--staged` はステージだけを操作する指定です。作業ファイルを残して次のコミットから外したいときに使います。省くと上の例のように作業ファイルに反映されます。
 
 ### 直前のコミットメッセージを直したい（まだpushしていない場合）
 
@@ -212,7 +212,7 @@ git restore --staged <ファイル名>
 git commit --amend -m "修正したメッセージ"
 ```
 
-メッセージだけ直す場合は、`git status` でステージ済みの変更がないことを先に確認します。`--amend` はコミットIDが変わります。**すでにpushした共有コミットには安易に使わない**でください。
+メッセージだけ直す場合は、`git status` でステージ済みの変更がないことを先に確認します。`--amend` は直前のコミットを置き換え、コミットIDも変わります。省くと、通常はステージした変更を新しいコミットとして履歴の末尾に追加します。**すでにpushした共有コミットには安易に使わない**でください。
 
 ## 4-6. 作業途中でpull・ブランチ切り替えができない
 
@@ -258,7 +258,7 @@ git stash pop
 | `CONFLICT (content)` | 同じ箇所を別々に変更 | `git status`、競合ファイル |
 | `Permission denied (publickey)` | SSH鍵の認証に失敗 | SSH設定、公開鍵の登録 |
 | `Authentication failed` | HTTPS認証に失敗 | 認証方法、ログイン状態 |
-| `Author identity unknown` | Gitの名前・メール未設定 | `git config --global --list` |
+| `Author identity unknown` | Gitの名前・メール未設定 | `git config --global --list` でユーザー共通設定を一覧表示。個別に確認する手順は[事前準備資料](00-install.md#5-3-設定を確認する)へ |
 | `not a git repository` | リポジトリ外で実行 | 現在のフォルダ、`cd` |
 | `nothing to commit` | コミット対象の変更がない | `git status` |
 | `rebase in progress` | rebaseが途中 | `git status`、`--continue` / `--abort` |
