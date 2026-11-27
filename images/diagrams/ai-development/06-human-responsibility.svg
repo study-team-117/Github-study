@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="501" viewBox="0 0 440 501" role="img" aria-labelledby="title desc">
+  <title id="title">人間とAIの責任分担</title>
+  <desc id="desc">権限は作業に必要な範囲に絞ります。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="501" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">人間とAIの責任分担</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">権限は作業に必要な範囲に絞ります。</text>
+    <rect x="20" y="89" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="124.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">人間：決定</text>
+    <text x="220.0" y="146.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">要件・権限・受入条件</text>
+    <path d="M 220.0 173 V 188" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="193" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="228.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">AI：支援</text>
+    <text x="220.0" y="250.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">調査・実装案・テスト・レビュー</text>
+    <path d="M 220.0 277 V 292" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="297" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="332.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">人間：検証</text>
+    <text x="220.0" y="354.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">仕様・差分・テスト・安全性</text>
+    <path d="M 220.0 381 V 396" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="401" width="400" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="436.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">人間：承認</text>
+    <text x="220.0" y="458.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">公開・マージ・外部送信</text>
+  </g>
+</svg>

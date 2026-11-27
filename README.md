@@ -44,6 +44,7 @@ VSCodeの使用は任意です。他のエディタやIDEでも学習できま�
 - [SQL入門](docs/sql/README.md) — SQLiteでデータの絞り込み・集計・結合を練習します。
 - [AWS入門](docs/aws/README.md) — Amazon RekognitionとCustom Labelsを例に、画像の分類と料金の考え方を学びます。
 - [LLMアプリの設計入門](docs/llm/README.md) — Git・SQLの教材を参照して答えるアシスタントを題材に、検索と回答の評価を学びます。
+- [Claude Code・Codexを活用したAI支援開発](docs/ai-development/README.md) — AIへの指示、作業の引き継ぎ、Git・GitHubでの検証とレビューを学びます。
 
 ## 学習時の注意
 

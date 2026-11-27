@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="605" viewBox="0 0 440 605" role="img" aria-labelledby="title desc">
+  <title id="title">Claude CodeとCodexの連携</title>
+  <desc id="desc">役割は交換できます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="605" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">Claude CodeとCodexの連携</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">役割は交換できます。</text>
+    <rect x="20" y="89" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="124.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">人間</text>
+    <text x="220.0" y="146.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">要件と受入条件を共有する</text>
+    <path d="M 220.0 173 V 188" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="193" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="228.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">Claude Code</text>
+    <text x="220.0" y="250.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">調査・実装・テストを行う</text>
+    <path d="M 220.0 277 V 292" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="297" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="332.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">引き継ぎ</text>
+    <text x="220.0" y="354.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">差分・テスト結果・未確認事項を渡す</text>
+    <path d="M 220.0 381 V 396" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="401" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="436.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">Codex</text>
+    <text x="220.0" y="458.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">変更を読み、指摘と根拠をまとめる</text>
+    <path d="M 220.0 485 V 500" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="505" width="400" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="540.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">人間</text>
+    <text x="220.0" y="562.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">指摘を検証し、修正と承認を判断する</text>
+  </g>
+</svg>
