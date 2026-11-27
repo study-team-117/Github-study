@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="510" viewBox="0 0 440 510" role="img" aria-labelledby="title desc">
+  <title id="title">AIエージェントの処理サイクル</title>
+  <desc id="desc">ツールの実行と停止はアプリ側が管理します。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="510" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">AIエージェントの処理サイクル</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">ツールの実行と停止はアプリ側が管理します。</text>
+    <rect x="20" y="88" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">利用者から目標を受け取る</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">モデルがツールと引数を提案</text>
+    <path d="M 220 172 V 191" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="196" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="231.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">アプリが実行を判断する</text>
+    <text x="220.0" y="253.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">引数・権限を検証し、必要なら人が承認</text>
+    <path d="M 220 280 V 299" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="304" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="339.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">ツールを実行して結果を返す</text>
+    <text x="220.0" y="361.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">結果をモデルに渡し、回答を検討</text>
+    <path d="M 220 388 V 407" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="412" width="400" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="447.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">回答するか再度判断する</text>
+    <text x="220.0" y="469.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">必要なら提案に戻る。上限で停止</text>
+  </g>
+</svg>

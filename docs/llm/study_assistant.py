@@ -17,23 +17,25 @@ TOPICS = (
 )
 
 
+def load_source(filename, heading):
+    """指定された教材の節から、見出しと本文を取り出す。"""
+    lines = (DOCS / filename).read_text(encoding="utf-8").splitlines()
+    start = lines.index(heading)
+    level = len(heading.split()[0])
+    end = next(
+        (i for i in range(start + 1, len(lines))
+         if re.match(rf"^#{{1,{level}}} ", lines[i])),
+        len(lines),
+    )
+    return filename, heading, "\n".join(lines[start + 1:end]).strip()
+
+
 def find_source(question):
     """手掛かりが一致する節を選び、見出しと本文を返す。"""
     for keywords, filename, heading in TOPICS:
-        if not any(word in question.casefold() for word in keywords):
-            continue
-
-        lines = (DOCS / filename).read_text(encoding="utf-8").splitlines()
-        start = lines.index(heading)
-        level = len(heading.split()[0])
-        end = next(
-            (i for i in range(start + 1, len(lines))
-             if re.match(rf"^#{{1,{level}}} ", lines[i])),
-            len(lines),
-        )
-        return filename, heading, "\n".join(lines[start + 1:end]).strip()
+        if any(word in question.casefold() for word in keywords):
+            return load_source(filename, heading)
     return None
-
 
 def generate_answer(question, source, model):
     """ローカルのOllamaに質問と教材の抜粋を渡す。"""

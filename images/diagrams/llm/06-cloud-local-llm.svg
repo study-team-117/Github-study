@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="350" viewBox="0 0 440 350" role="img" aria-labelledby="title desc">
+  <title id="title">クラウドLLMとローカルLLM</title>
+  <desc id="desc">どこで推論するかを確認します。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="350" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">クラウドLLMとローカルLLM</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">どこで推論するかを確認します。</text>
+    <rect x="20" y="88" width="400" height="104" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="124.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">クラウドLLM</text>
+    <text x="220.0" y="146.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">アプリ → ネットワークとAPI</text>
+    <text x="220.0" y="168.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">提供元のモデルで推論</text>
+    <rect x="20" y="204" width="400" height="128" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="241.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">ローカルLLM</text>
+    <text x="220.0" y="263.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">アプリ → 手元の推論環境</text>
+    <text x="220.0" y="285.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">PCなどでモデルを実行</text>
+    <text x="220.0" y="307.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">連携機能による外部通信は確認する</text>
+  </g>
+</svg>

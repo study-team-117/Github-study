@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="510" viewBox="0 0 440 510" role="img" aria-labelledby="title desc">
+  <title id="title">AI・機械学習・LLMの関係</title>
+  <desc id="desc">技術の範囲と、何を生成するかを区別します。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="510" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">AI・機械学習・LLMの関係</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">技術の範囲と、何を生成するかを区別します。</text>
+    <rect x="20" y="88" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">AI</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">知的な処理を行う技術の総称</text>
+    <rect x="20" y="180" width="400" height="104" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="216.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">機械学習・深層学習</text>
+    <text x="220.0" y="238.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">AIの一分野としてデータから学ぶ</text>
+    <text x="220.0" y="260.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">深層学習は機械学習の一分野</text>
+    <rect x="20" y="296" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="331.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">LLM（大規模言語モデル）</text>
+    <text x="220.0" y="353.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">深層学習で言語の扱い方を学ぶ</text>
+    <rect x="20" y="388" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="424.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">生成AIは何を作るかに着目</text>
+    <text x="220.0" y="446.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">生成型LLMは文章を作る代表例</text>
+    <text x="220.0" y="468.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">画像や音声を作るモデルもある</text>
+  </g>
+</svg>

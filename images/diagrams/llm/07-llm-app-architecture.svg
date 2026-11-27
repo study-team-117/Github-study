@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="534" viewBox="0 0 440 534" role="img" aria-labelledby="title desc">
+  <title id="title">LLMアプリの全体構成</title>
+  <desc id="desc">教材検索アシスタントをWeb化した例です。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="534" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">LLMアプリの全体構成</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">教材検索アシスタントをWeb化した例です。</text>
+    <rect x="20" y="88" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">画面で質問する</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">バックエンドへリクエスト</text>
+    <path d="M 220 172 V 191" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="196" width="400" height="104" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="232.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">バックエンドで準備する</text>
+    <text x="220.0" y="254.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">利用者の権限を確認し、教材を検索</text>
+    <text x="220.0" y="276.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">質問と根拠をLLMに渡す</text>
+    <path d="M 220 304 V 323" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="328" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="363.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">LLMが回答を作る</text>
+    <text x="220.0" y="385.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">出力をバックエンドへ返す</text>
+    <path d="M 220 412 V 431" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="436" width="400" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="471.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">検証・整形して表示する</text>
+    <text x="220.0" y="493.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">根拠と出典はアプリ側で確かめる</text>
+  </g>
+</svg>
