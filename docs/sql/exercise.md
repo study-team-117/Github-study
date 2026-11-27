@@ -1,6 +1,6 @@
 # SQL入門｜ミニ演習
 
-[← SQL入門](README.md)
+[← SQL入門](README.md) ｜ [AIの使い方の共通方針](../../README.md#学習と開発でのaiの使い方)
 
 [練習用データ](sample.sql)を読み込んだSQLiteで、次のSQLを書いてみましょう。
 

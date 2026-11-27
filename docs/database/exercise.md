@@ -1,6 +1,6 @@
 # データベースの基礎と実践｜演習
 
-[← 補足教材の目次](README.md) ｜ [回答例・解説](answer.md)
+[← 補足教材の目次](README.md) ｜ [回答例・解説](answer.md) ｜ [AIの使い方の共通方針](../../README.md#学習と開発でのaiの使い方)
 
 各課題は、新しい練習用DBに既存の [`sample.sql`](../sql/sample.sql) を読み込んだ状態から始めます。基本・応用は[ブラウザ上のSQLite](../sql/README.md#準備ブラウザでsqliteを開く)でも実行できます。
 
