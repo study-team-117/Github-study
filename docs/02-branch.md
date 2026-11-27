@@ -189,7 +189,7 @@ git switch feature/profile
 
 ### `Permission denied` / `Authentication failed`
 
-GitHubへの認証に問題がある可能性があります。[00 インストール・初期設定](00-install.md)の認証方法を確認してください。
+GitHubへの認証に問題がある可能性があります。[事前準備資料](00-install.md)の認証方法を確認してください。
 
 ## 2-11. 理解度チェック
 
