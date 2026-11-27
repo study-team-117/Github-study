@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="302" viewBox="0 0 440 302" role="img" aria-labelledby="title desc">
+  <title id="title">SQLインジェクションの予防</title>
+  <desc id="desc">SQLの構文と、利用者の入力値を分けます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="302" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">SQLインジェクションの予防</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">SQLの構文と、利用者の入力値を分けます。</text>
+    <rect x="20" y="88" width="400" height="80" rx="10" fill="#ffffff" stroke="#9b3440" stroke-width="2"/>
+    <text x="220.0" y="123.0" font-size="20" font-weight="700" fill="#9b3440" text-anchor="middle">文字列の連結</text>
+    <text x="220.0" y="145.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">入力がSQL構文として解釈され得る</text>
+    <rect x="20" y="180" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="216.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">パラメータ化</text>
+    <text x="220.0" y="238.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">SQLを固定し、入力は値として渡す</text>
+    <text x="220.0" y="260.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">列名などを切り替えるなら許可リスト</text>
+  </g>
+</svg>

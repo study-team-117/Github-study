@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="341" viewBox="0 0 440 341" role="img" aria-labelledby="title desc">
+  <title id="title">GROUP BY と集計</title>
+  <desc id="desc">カテゴリ別に商品の在庫を合計します。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="341" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">GROUP BY と集計</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">カテゴリ別に商品の在庫を合計します。</text>
+    <rect x="20" y="88" width="400" height="104" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="124.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">文具と雑貨で分ける</text>
+    <text x="220.0" y="146.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">文具：ノート12個・ペン3個</text>
+    <text x="220.0" y="168.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">雑貨：マグカップ2個</text>
+    <path d="M 220 196 V 214" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="219" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="255.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">カテゴリごとに SUM(stock)</text>
+    <text x="220.0" y="277.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">文具：15個</text>
+    <text x="220.0" y="299.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">雑貨：2個</text>
+  </g>
+</svg>

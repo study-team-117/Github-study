@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="510" viewBox="0 0 440 510" role="img" aria-labelledby="title desc">
+  <title id="title">データベースの種類</title>
+  <desc id="desc">必要な検索・更新と運用に合わせて選びます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="510" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">データベースの種類</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">必要な検索・更新と運用に合わせて選びます。</text>
+    <rect x="20" y="88" width="400" height="104" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="124.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">リレーショナルDB</text>
+    <text x="220.0" y="146.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">表・関係・制約で管理</text>
+    <text x="220.0" y="168.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">SQLite／MySQL／PostgreSQL</text>
+    <rect x="20" y="204" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="239.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">ドキュメント型</text>
+    <text x="220.0" y="261.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">文書単位で管理（MongoDBなど）</text>
+    <rect x="20" y="296" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="331.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">キーバリュー型</text>
+    <text x="220.0" y="353.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">キーで取得（Redisなど）</text>
+    <rect x="20" y="388" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="424.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">ベクトル検索</text>
+    <text x="220.0" y="446.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">類似度で探す（Qdrantなど）</text>
+    <text x="220.0" y="468.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">対応するRDBでも利用できる</text>
+  </g>
+</svg>
