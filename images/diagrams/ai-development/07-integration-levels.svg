@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="553" viewBox="0 0 440 553" role="img" aria-labelledby="title desc">
+  <title id="title">連携方法の選択肢</title>
+  <desc id="desc">作業の規模や目的に応じて選びます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="553" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">連携方法の選択肢</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">作業の規模や目的に応じて選びます。</text>
+    <rect x="20" y="87" width="400" height="78" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="121.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">手動の引き継ぎ</text>
+    <text x="220.0" y="143.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">依頼と作業結果を相手に渡す</text>
+    <rect x="20" y="179" width="400" height="78" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="213.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">共有Markdown</text>
+    <text x="220.0" y="235.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">要件と作業記録の参照先をそろえる</text>
+    <rect x="20" y="271" width="400" height="78" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="305.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">Pull Request</text>
+    <text x="220.0" y="327.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">対象コミットや差分を共有する</text>
+    <rect x="20" y="363" width="400" height="78" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="397.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">worktree</text>
+    <text x="220.0" y="419.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">別フォルダで並行して作業する</text>
+    <rect x="20" y="455" width="400" height="78" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="489.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">CLI・SDK</text>
+    <text x="220.0" y="511.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">権限・費用・停止条件を決めて自動化</text>
+  </g>
+</svg>

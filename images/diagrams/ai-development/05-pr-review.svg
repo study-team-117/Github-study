@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="605" viewBox="0 0 440 605" role="img" aria-labelledby="title desc">
+  <title id="title">PRと相互レビュー</title>
+  <desc id="desc">指摘は差分と再現結果で確かめます。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="605" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">PRと相互レビュー</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">指摘は差分と再現結果で確かめます。</text>
+    <rect x="20" y="89" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="124.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">作業ブランチ</text>
+    <text x="220.0" y="146.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">実装し、差分を確認してコミット</text>
+    <path d="M 220.0 173 V 188" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="193" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="228.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">Pull Request</text>
+    <text x="220.0" y="250.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">目的・受入条件・確認方法を共有</text>
+    <path d="M 220.0 277 V 292" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="297" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="332.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">AIレビュー</text>
+    <text x="220.0" y="354.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">問題点と根拠を提示</text>
+    <path d="M 220.0 381 V 396" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="401" width="400" height="80" rx="10" fill="#ffffff" stroke="#245d87" stroke-width="2"/>
+    <text x="220.0" y="436.0" font-size="20" font-weight="700" fill="#245d87" text-anchor="middle">修正・再テスト</text>
+    <text x="220.0" y="458.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">指摘を検証し、必要な修正を行う</text>
+    <path d="M 220.0 485 V 500" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="20" y="505" width="400" height="80" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="540.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">人間の確認とマージ</text>
+    <text x="220.0" y="562.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">最新の差分とテスト結果で判断</text>
+  </g>
+</svg>
