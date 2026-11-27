@@ -151,7 +151,7 @@ git bisect reset
 git worktree add -b feature/docs ../project-docs main
 ```
 
-これで `../project-docs` に新しい作業フォルダができます。そのフォルダをVSCodeで開き、そこで編集やコミットを行います。片方で機能開発を続けながら、もう片方でドキュメントを修正できます。
+`-b` で `main` から新しいブランチ `feature/docs` を作り、`../project-docs` で開きます。`-b` を省いて同じ引数を渡すと、既存の `main` を開こうとします。別の作業フォルダですでに開いているブランチは通常そのままでは開けません。そのフォルダをVSCodeで開き、そこで編集やコミットを行います。片方で機能開発を続けながら、もう片方でドキュメントを修正できます。
 
 ```bash
 git worktree list
