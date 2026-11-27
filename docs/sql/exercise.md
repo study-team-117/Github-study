@@ -99,7 +99,7 @@
 <details>
 <summary>ヒント2：本文の参照先・使う考え方</summary>
 
-[サブクエリの説明](../database/03-sql.md#推奨サブクエリとnull)を参照します。
+[サブクエリの説明](../database/03-sql.md#サブクエリとnull)を参照します。
 
 </details>
 
@@ -135,7 +135,7 @@ SQLiteでは `CREATE TEMP VIEW` で現在の接続だけで使えるビューを
 <details>
 <summary>ヒント2：本文の参照先・使う考え方</summary>
 
-[トランザクションの実行例](../database/04-application.md#必修注文と在庫更新を一緒に確定する)を参照します。
+[トランザクションの実行例](../database/04-application.md#注文と在庫更新を一緒に確定する)を参照します。
 
 </details>
 

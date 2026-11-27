@@ -102,6 +102,29 @@ git merge --continue
 
 > **重要**：rebase中の `HEAD` やVSCodeの「Current / Incoming」の意味は、通常のmergeと直感的に異なることがあります。ラベルだけで判断せず、実際の変更内容を比較してください。
 
+### GitHubのブラウザでPRの競合を解消する
+
+PRの下部に競合の警告が出たら、**Resolve conflicts** を押して競合エディタを開きます。ブラウザで解消できるのは、同じ行を別々に変更した場合などの単純な競合です。ボタンが無効な場合は、この節のローカルでの手順を使います。
+
+<a href="../images/screenshots/04-conflict-01-warning.png"><img src="../images/screenshots/04-conflict-01-warning.png" alt="GitHubのPR下部にREADME.mdの競合警告とResolve conflictsボタンが表示された画面" width="520"></a>
+
+競合しているファイルを選び、2つの変更を見比べます。下の画像では作業ブランチ `feature/a` が **Current change**、取り込み先の `main` が **Incoming change** です。ローカルでのmergeやrebaseではラベルが指す側が変わることがあるため、名前だけで判断せず、競合マーカーに表示されたブランチ名や変更内容を確認します。
+
+<a href="../images/screenshots/04-conflict-02-editor.png"><img src="../images/screenshots/04-conflict-02-editor.png" alt="GitHubの競合エディタでfeature/aがCurrent change、mainがIncoming changeと表示され、3つのAccept操作とMark as resolvedが示された画面" width="520"></a>
+
+| 操作 | 競合箇所に残す内容 |
+|---|---|
+| **Accept current change** | Current側だけを残します。画像では `feature/a` の `theme : API` です。 |
+| **Accept incoming change** | Incoming側だけを残します。画像では `main` の `theme : VR and AI` です。 |
+| **Accept both changes** | 両側の内容をそのまま残します。画像では `theme` で始まる行が2行残ります。 |
+
+**Accept both changes** を選んだ後も、同じ設定が重複したり、内容が矛盾したりしていないか確認します。手動で統合する場合は、エディタで必要な内容を書き直し、`<<<<<<<`・`=======`・`>>>>>>>` の行を取り除きます。たとえば両方のテーマを1行にまとめる仕様なら、競合部分を `theme : API, VR and AI` の1行にします。
+
+1. そのファイルの競合をすべて解消したら **Mark as resolved** を押し、解消済みとします。ほかのファイルでも同じように確認します。
+2. 全ファイルが解消済みになったら **Commit merge** を押します。この操作で、解消内容と取り込み先（base）の変更がPRの作業ブランチ（head）に記録されます。その後、PR画面で競合の警告が消えたことと、**Files changed** やテスト結果を確認し、通常のPRの手順で取り込みます。
+
+[GitHub公式：ブラウザで競合を解消する](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/resolving-a-merge-conflict-on-github)
+
 ## 4-4. 間違えて `main` にpushしてしまった！
 
 ![未コミットならステージと編集を分けて扱う。コミット済みなら共有状況を確認し、共有済みならrevertで打ち消す](../images/diagrams/04-troubleshooting-flow.svg)
