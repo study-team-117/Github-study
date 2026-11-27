@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="326" viewBox="0 0 440 326" role="img" aria-labelledby="title desc">
+  <title id="title">トランザクション：注文の例</title>
+  <desc id="desc">ペンの在庫は3個から始まります。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#176955"/>
+    </marker>
+  </defs>
+  <g font-family="Noto Sans CJK JP, Hiragino Sans, Yu Gothic, Meiryo, sans-serif">
+    <rect x="0" y="0" width="440" height="326" rx="16" fill="#f8fafc"/>
+    <text x="20" y="37" font-size="24" font-weight="700" fill="#172b42">トランザクション：注文の例</text>
+    <text x="20" y="65" font-size="18" font-weight="400" fill="#475569">ペンの在庫は3個から始まります。</text>
+    <rect x="20" y="88" width="400" height="104" rx="10" fill="#ffffff" stroke="#176955" stroke-width="2"/>
+    <text x="220.0" y="124.0" font-size="20" font-weight="700" fill="#176955" text-anchor="middle">1個の注文：成功</text>
+    <text x="220.0" y="146.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">在庫を1個減らし、明細を追加</text>
+    <text x="220.0" y="168.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">COMMIT：在庫2個・明細が1件増える</text>
+    <rect x="20" y="204" width="400" height="104" rx="10" fill="#ffffff" stroke="#9b3440" stroke-width="2"/>
+    <text x="220.0" y="240.0" font-size="20" font-weight="700" fill="#9b3440" text-anchor="middle">9個の注文：失敗</text>
+    <text x="220.0" y="262.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">在庫2個では足りない</text>
+    <text x="220.0" y="284.0" font-size="18" font-weight="400" fill="#172b42" text-anchor="middle">ROLLBACK：在庫2個・明細は増えない</text>
+  </g>
+</svg>

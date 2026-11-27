@@ -40,6 +40,7 @@ VSCodeの使用は任意です。他のエディタやIDEでも学習できま�
 
 ## 補足教材
 
+- [データベースの基礎と実践](docs/database/README.md) — DB設計、SQL、アプリとの連携、チームでの構造変更と安全対策を学びます。
 - [SQL入門](docs/sql/README.md) — SQLiteでデータの絞り込み・集計・結合を練習します。
 - [AWS入門](docs/aws/README.md) — Amazon RekognitionとCustom Labelsを例に、画像の分類と料金の考え方を学びます。
 - [LLMアプリの設計入門](docs/llm/README.md) — Git・SQLの教材を参照して答えるアシスタントを題材に、検索と回答の評価を学びます。
